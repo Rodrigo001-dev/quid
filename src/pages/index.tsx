@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <div className="h-screen bg-[url('/assets/bg-img.svg')] bg-contain bg-no-repeat bg-right-bottom">
         <Header />
         <main className="max-w-[1440px] mt-72 ml-32 text-text-500">
           <h1 className="text-5xl text-bold font-bold pb-11">
