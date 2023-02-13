@@ -1,1022 +1,1022 @@
 export const countries = [
   {
     name: "Afeganistão",
-    sigla: "AF",
+    code: "AF",
   },
   {
     name: "África do Sul",
-    sigla: "ZA",
+    code: "ZA",
   },
   {
     name: "Albânia",
-    sigla: "AL",
+    code: "AL",
   },
   {
     name: "Alemanha",
-    sigla: "DE",
+    code: "DE",
   },
   {
     name: "Andorra",
-    sigla: "AD",
+    code: "AD",
   },
   {
     name: "Angola",
-    sigla: "AO",
+    code: "AO",
   },
   {
     name: "Anguilla",
-    sigla: "AI",
+    code: "AI",
   },
   {
     name: "Antártida",
-    sigla: "AQ",
+    code: "AQ",
   },
   {
     name: "Antígua e Barbuda",
-    sigla: "AG",
+    code: "AG",
   },
   {
     name: "Arábia Saudita",
-    sigla: "SA",
+    code: "SA",
   },
   {
     name: "Argélia",
-    sigla: "DZ",
+    code: "DZ",
   },
   {
     name: "Argentina",
-    sigla: "AR",
+    code: "AR",
   },
   {
     name: "Armênia",
-    sigla: "AM",
+    code: "AM",
   },
   {
     name: "Aruba",
-    sigla: "AW",
+    code: "AW",
   },
   {
     name: "Austrália",
-    sigla: "AU",
+    code: "AU",
   },
   {
     name: "Áustria",
-    sigla: "AT",
+    code: "AT",
   },
   {
     name: "Azerbaijão",
-    sigla: "AZ",
+    code: "AZ",
   },
   {
     name: "Bahamas",
-    sigla: "BS",
+    code: "BS",
   },
   {
     name: "Bahrein",
-    sigla: "BH",
+    code: "BH",
   },
   {
     name: "Bangladesh",
-    sigla: "BD",
+    code: "BD",
   },
   {
     name: "Barbados",
-    sigla: "BB",
+    code: "BB",
   },
   {
     name: "Belarus",
-    sigla: "BY",
+    code: "BY",
   },
   {
     name: "Bélgica",
-    sigla: "BE",
+    code: "BE",
   },
   {
     name: "Belize",
-    sigla: "BZ",
+    code: "BZ",
   },
   {
     name: "Benin",
-    sigla: "BJ",
+    code: "BJ",
   },
   {
     name: "Bermudas",
-    sigla: "BM",
+    code: "BM",
   },
   {
     name: "Bolívia",
-    sigla: "BO",
+    code: "BO",
   },
   {
     name: "Bósnia-Herzegóvina",
-    sigla: "BA",
+    code: "BA",
   },
   {
     name: "Botsuana",
-    sigla: "BW",
+    code: "BW",
   },
   {
     name: "Brasil",
-    sigla: "BR",
+    code: "BR",
   },
   {
     name: "Brunei",
-    sigla: "BN",
+    code: "BN",
   },
   {
     name: "Bulgária",
-    sigla: "BG",
+    code: "BG",
   },
   {
     name: "Burkina Fasso",
-    sigla: "BF",
+    code: "BF",
   },
   {
     name: "Burundi",
-    sigla: "BI",
+    code: "BI",
   },
   {
     name: "Butão",
-    sigla: "BT",
+    code: "BT",
   },
   {
     name: "Cabo Verde",
-    sigla: "CV",
+    code: "CV",
   },
   {
     name: "Camarões",
-    sigla: "CM",
+    code: "CM",
   },
   {
     name: "Camboja",
-    sigla: "KH",
+    code: "KH",
   },
   {
     name: "Canadá",
-    sigla: "CA",
+    code: "CA",
   },
   {
     name: "Canárias",
-    sigla: "IC",
+    code: "IC",
   },
   {
     name: "Cazaquistão",
-    sigla: "KZ",
+    code: "KZ",
   },
   {
     name: "Ceuta e Melilla",
-    sigla: "EA",
+    code: "EA",
   },
   {
     name: "Chade",
-    sigla: "TD",
+    code: "TD",
   },
   {
     name: "Chile",
-    sigla: "CL",
+    code: "CL",
   },
   {
     name: "China",
-    sigla: "CN",
+    code: "CN",
   },
   {
     name: "Chipre",
-    sigla: "CY",
+    code: "CY",
   },
   {
     name: "Cingapura",
-    sigla: "SG",
+    code: "SG",
   },
   {
     name: "Colômbia",
-    sigla: "CO",
+    code: "CO",
   },
   {
     name: "Comores",
-    sigla: "KM",
+    code: "KM",
   },
   {
     name: "Congo",
-    sigla: "CG",
+    code: "CG",
   },
   {
     name: "Coréia do Norte",
-    sigla: "KP",
+    code: "KP",
   },
   {
     name: "Coréia do Sul",
-    sigla: "KR",
+    code: "KR",
   },
   {
     name: "Costa do Marfim",
-    sigla: "CI",
+    code: "CI",
   },
   {
     name: "Costa Rica",
-    sigla: "CR",
+    code: "CR",
   },
   {
     name: "Croácia",
-    sigla: "HR",
+    code: "HR",
   },
   {
     name: "Cuba",
-    sigla: "CU",
+    code: "CU",
   },
   {
     name: "Curaçao",
-    sigla: "CW",
+    code: "CW",
   },
   {
     name: "Diego Garcia",
-    sigla: "DG",
+    code: "DG",
   },
   {
     name: "Dinamarca",
-    sigla: "DK",
+    code: "DK",
   },
   {
     name: "Djibuti",
-    sigla: "DJ",
+    code: "DJ",
   },
   {
     name: "Dominica",
-    sigla: "DM",
+    code: "DM",
   },
   {
     name: "Egito",
-    sigla: "EG",
+    code: "EG",
   },
   {
     name: "El Salvador",
-    sigla: "SV",
+    code: "SV",
   },
   {
     name: "Emirados Árabes Unidos",
-    sigla: "AE",
+    code: "AE",
   },
   {
     name: "Equador",
-    sigla: "EC",
+    code: "EC",
   },
   {
     name: "Eritréia",
-    sigla: "ER",
+    code: "ER",
   },
   {
     name: "Eslováquia",
-    sigla: "SK",
+    code: "SK",
   },
   {
     name: "Eslovênia",
-    sigla: "SI",
+    code: "SI",
   },
   {
     name: "Espanha",
-    sigla: "ES",
+    code: "ES",
   },
   {
     name: "Estados Unidos",
-    sigla: "US",
+    code: "US",
   },
   {
     name: "Estônia",
-    sigla: "EE",
+    code: "EE",
   },
   {
     name: "Etiópia",
-    sigla: "ET",
+    code: "ET",
   },
   {
     name: "Fiji",
-    sigla: "FJ",
+    code: "FJ",
   },
   {
     name: "Filipinas",
-    sigla: "PH",
+    code: "PH",
   },
   {
     name: "Finlândia",
-    sigla: "FI",
+    code: "FI",
   },
   {
     name: "França",
-    sigla: "FR",
+    code: "FR",
   },
   {
     name: "Gabão",
-    sigla: "GA",
+    code: "GA",
   },
   {
     name: "Gâmbia",
-    sigla: "GM",
+    code: "GM",
   },
   {
     name: "Gana",
-    sigla: "GH",
+    code: "GH",
   },
   {
     name: "Geórgia",
-    sigla: "GE",
+    code: "GE",
   },
   {
     name: "Gibraltar",
-    sigla: "GI",
+    code: "GI",
   },
   {
     name: "Grã-Bretanha (Reino Unido, UK)",
-    sigla: "GB",
+    code: "GB",
   },
   {
     name: "Granada",
-    sigla: "GD",
+    code: "GD",
   },
   {
     name: "Grécia",
-    sigla: "GR",
+    code: "GR",
   },
   {
     name: "Groelândia",
-    sigla: "GL",
+    code: "GL",
   },
   {
     name: "Guadalupe",
-    sigla: "GP",
+    code: "GP",
   },
   {
     name: "Guam (Território dos Estados Unidos)",
-    sigla: "GU",
+    code: "GU",
   },
   {
     name: "Guatemala",
-    sigla: "GT",
+    code: "GT",
   },
   {
     name: "Guernsey",
-    sigla: "GG",
+    code: "GG",
   },
   {
     name: "Guiana",
-    sigla: "GY",
+    code: "GY",
   },
   {
     name: "Guiana Francesa",
-    sigla: "GF",
+    code: "GF",
   },
   {
     name: "Guiné",
-    sigla: "GN",
+    code: "GN",
   },
   {
     name: "Guiné Equatorial",
-    sigla: "GQ",
+    code: "GQ",
   },
   {
     name: "Guiné-Bissau",
-    sigla: "GW",
+    code: "GW",
   },
   {
     name: "Haiti",
-    sigla: "HT",
+    code: "HT",
   },
   {
     name: "Holanda",
-    sigla: "NL",
+    code: "NL",
   },
   {
     name: "Honduras",
-    sigla: "HN",
+    code: "HN",
   },
   {
     name: "Hong Kong",
-    sigla: "HK",
+    code: "HK",
   },
   {
     name: "Hungria",
-    sigla: "HU",
+    code: "HU",
   },
   {
     name: "Iêmen",
-    sigla: "YE",
+    code: "YE",
   },
   {
     name: "Ilha Bouvet",
-    sigla: "BV",
+    code: "BV",
   },
   {
     name: "Ilha de Ascensão",
-    sigla: "AC",
+    code: "AC",
   },
   {
     name: "Ilha de Clipperton",
-    sigla: "CP",
+    code: "CP",
   },
   {
     name: "Ilha de Man",
-    sigla: "IM",
+    code: "IM",
   },
   {
     name: "Ilha Natal",
-    sigla: "CX",
+    code: "CX",
   },
   {
     name: "Ilha Pitcairn",
-    sigla: "PN",
+    code: "PN",
   },
   {
     name: "Ilha Reunião",
-    sigla: "RE",
+    code: "RE",
   },
   {
     name: "Ilhas Aland",
-    sigla: "AX",
+    code: "AX",
   },
   {
     name: "Ilhas Cayman",
-    sigla: "KY",
+    code: "KY",
   },
   {
     name: "Ilhas Cocos",
-    sigla: "CC",
+    code: "CC",
   },
   {
     name: "Ilhas Cook",
-    sigla: "CK",
+    code: "CK",
   },
   {
     name: "Ilhas Faroes",
-    sigla: "FO",
+    code: "FO",
   },
   {
     name: "Ilhas Geórgia do Sul e Sandwich do Sul",
-    sigla: "GS",
+    code: "GS",
   },
   {
     name: "Ilhas Heard e McDonald (Território da Austrália)",
-    sigla: "HM",
+    code: "HM",
   },
   {
     name: "Ilhas Malvinas",
-    sigla: "FK",
+    code: "FK",
   },
   {
     name: "Ilhas Marianas do Norte",
-    sigla: "MP",
+    code: "MP",
   },
   {
     name: "Ilhas Marshall",
-    sigla: "MH",
+    code: "MH",
   },
   {
     name: "Ilhas Menores dos Estados Unidos",
-    sigla: "UM",
+    code: "UM",
   },
   {
     name: "Ilhas Norfolk",
-    sigla: "NF",
+    code: "NF",
   },
   {
     name: "Ilhas Salomão",
-    sigla: "SB",
+    code: "SB",
   },
   {
     name: "Ilhas Seychelles",
-    sigla: "SC",
+    code: "SC",
   },
   {
     name: "Ilhas Tokelau",
-    sigla: "TK",
+    code: "TK",
   },
   {
     name: "Ilhas Turks e Caicos",
-    sigla: "TC",
+    code: "TC",
   },
   {
     name: "Ilhas Virgens (Estados Unidos)",
-    sigla: "VI",
+    code: "VI",
   },
   {
     name: "Ilhas Virgens (Inglaterra)",
-    sigla: "VG",
+    code: "VG",
   },
   {
     name: "Índia",
-    sigla: "IN",
+    code: "IN",
   },
   {
     name: "Indonésia",
-    sigla: "ID",
+    code: "ID",
   },
   {
     name: "Irã",
-    sigla: "IR",
+    code: "IR",
   },
   {
     name: "Iraque",
-    sigla: "IQ",
+    code: "IQ",
   },
   {
     name: "Irlanda",
-    sigla: "IE",
+    code: "IE",
   },
   {
     name: "Islândia",
-    sigla: "IS",
+    code: "IS",
   },
   {
     name: "Israel",
-    sigla: "IL",
+    code: "IL",
   },
   {
     name: "Itália",
-    sigla: "IT",
+    code: "IT",
   },
   {
     name: "Jamaica",
-    sigla: "JM",
+    code: "JM",
   },
   {
     name: "Japão",
-    sigla: "JP",
+    code: "JP",
   },
   {
     name: "Jersey",
-    sigla: "JE",
+    code: "JE",
   },
   {
     name: "Jordânia",
-    sigla: "JO",
+    code: "JO",
   },
   {
     name: "Kiribati",
-    sigla: "KI",
+    code: "KI",
   },
   {
     name: "Kosovo",
-    sigla: "XK",
+    code: "XK",
   },
   {
     name: "Kuait",
-    sigla: "KW",
+    code: "KW",
   },
   {
     name: "Laos",
-    sigla: "LA",
+    code: "LA",
   },
   {
     name: "Lesoto",
-    sigla: "LS",
+    code: "LS",
   },
   {
     name: "Letônia",
-    sigla: "LV",
+    code: "LV",
   },
   {
     name: "Líbano",
-    sigla: "LB",
+    code: "LB",
   },
   {
     name: "Libéria",
-    sigla: "LR",
+    code: "LR",
   },
   {
     name: "Líbia",
-    sigla: "LY",
+    code: "LY",
   },
   {
     name: "Liechtenstein",
-    sigla: "LI",
+    code: "LI",
   },
   {
     name: "Lituânia",
-    sigla: "LT",
+    code: "LT",
   },
   {
     name: "Luxemburgo",
-    sigla: "LU",
+    code: "LU",
   },
   {
     name: "Macau",
-    sigla: "MO",
+    code: "MO",
   },
   {
     name: "Macedônia (República Yugoslava)",
-    sigla: "MK",
+    code: "MK",
   },
   {
     name: "Madagascar",
-    sigla: "MG",
+    code: "MG",
   },
   {
     name: "Malásia",
-    sigla: "MY",
+    code: "MY",
   },
   {
     name: "Malaui",
-    sigla: "MW",
+    code: "MW",
   },
   {
     name: "Maldivas",
-    sigla: "MV",
+    code: "MV",
   },
   {
     name: "Mali",
-    sigla: "ML",
+    code: "ML",
   },
   {
     name: "Malta",
-    sigla: "MT",
+    code: "MT",
   },
   {
     name: "Marrocos",
-    sigla: "MA",
+    code: "MA",
   },
   {
     name: "Martinica",
-    sigla: "MQ",
+    code: "MQ",
   },
   {
     name: "Maurício",
-    sigla: "MU",
+    code: "MU",
   },
   {
     name: "Mauritânia",
-    sigla: "MR",
+    code: "MR",
   },
   {
     name: "Mayotte",
-    sigla: "YT",
+    code: "YT",
   },
   {
     name: "México",
-    sigla: "MX",
+    code: "MX",
   },
   {
     name: "Micronésia",
-    sigla: "FM",
+    code: "FM",
   },
   {
     name: "Moçambique",
-    sigla: "MZ",
+    code: "MZ",
   },
   {
     name: "Moldova",
-    sigla: "MD",
+    code: "MD",
   },
   {
     name: "Mônaco",
-    sigla: "MC",
+    code: "MC",
   },
   {
     name: "Mongólia",
-    sigla: "MN",
+    code: "MN",
   },
   {
     name: "Montenegro",
-    sigla: "ME",
+    code: "ME",
   },
   {
     name: "Montserrat",
-    sigla: "MS",
+    code: "MS",
   },
   {
     name: "Myanma",
-    sigla: "MM",
+    code: "MM",
   },
   {
     name: "Namíbia",
-    sigla: "NA",
+    code: "NA",
   },
   {
     name: "Nauru",
-    sigla: "NR",
+    code: "NR",
   },
   {
     name: "Nepal",
-    sigla: "NP",
+    code: "NP",
   },
   {
     name: "Nicarágua",
-    sigla: "NI",
+    code: "NI",
   },
   {
     name: "Níger",
-    sigla: "NE",
+    code: "NE",
   },
   {
     name: "Nigéria",
-    sigla: "NG",
+    code: "NG",
   },
   {
     name: "Niue",
-    sigla: "NU",
+    code: "NU",
   },
   {
     name: "Noruega",
-    sigla: "NO",
+    code: "NO",
   },
   {
     name: "Nova Caledônia",
-    sigla: "NC",
+    code: "NC",
   },
   {
     name: "Nova Zelândia",
-    sigla: "NZ",
+    code: "NZ",
   },
   {
     name: "Países Baixos Caribenhos",
-    sigla: "BQ",
+    code: "BQ",
   },
   {
     name: "Palau",
-    sigla: "PW",
+    code: "PW",
   },
   {
     name: "Palestina",
-    sigla: "PS",
+    code: "PS",
   },
   {
     name: "Panamá",
-    sigla: "PA",
+    code: "PA",
   },
   {
     name: "Papua-Nova Guiné",
-    sigla: "PG",
+    code: "PG",
   },
   {
     name: "Paquistão",
-    sigla: "PK",
+    code: "PK",
   },
   {
     name: "Paraguai",
-    sigla: "PY",
+    code: "PY",
   },
   {
     name: "Peru",
-    sigla: "PE",
+    code: "PE",
   },
   {
     name: "Polinésia Francesa",
-    sigla: "PF",
+    code: "PF",
   },
   {
     name: "Polônia",
-    sigla: "PL",
+    code: "PL",
   },
   {
     name: "Porto Rico",
-    sigla: "PR",
+    code: "PR",
   },
   {
     name: "Portugal",
-    sigla: "PT",
+    code: "PT",
   },
   {
     name: "Qatar",
-    sigla: "QA",
+    code: "QA",
   },
   {
     name: "Quênia",
-    sigla: "KE",
+    code: "KE",
   },
   {
     name: "Quirguistão",
-    sigla: "KG",
+    code: "KG",
   },
   {
     name: "República Centro-Africana",
-    sigla: "CF",
+    code: "CF",
   },
   {
     name: "República Democrática do Congo",
-    sigla: "CD",
+    code: "CD",
   },
   {
     name: "República Dominicana",
-    sigla: "DO",
+    code: "DO",
   },
   {
     name: "República Tcheca",
-    sigla: "CZ",
+    code: "CZ",
   },
   {
     name: "Romênia",
-    sigla: "RO",
+    code: "RO",
   },
   {
     name: "Ruanda",
-    sigla: "RW",
+    code: "RW",
   },
   {
     name: "Rússia (antiga URSS) - Federação Russa",
-    sigla: "RU",
+    code: "RU",
   },
   {
     name: "Saara Ocidental",
-    sigla: "EH",
+    code: "EH",
   },
   {
     name: "Saint-Pierre e Miquelon",
-    sigla: "PM",
+    code: "PM",
   },
   {
     name: "Samoa Americana",
-    sigla: "AS",
+    code: "AS",
   },
   {
     name: "Samoa Ocidental",
-    sigla: "WS",
+    code: "WS",
   },
   {
     name: "San Marino",
-    sigla: "SM",
+    code: "SM",
   },
   {
     name: "Santa Helena",
-    sigla: "SH",
+    code: "SH",
   },
   {
     name: "Santa Lúcia",
-    sigla: "LC",
+    code: "LC",
   },
   {
     name: "São Bartolomeu",
-    sigla: "BL",
+    code: "BL",
   },
   {
     name: "São Cristóvão e Névis",
-    sigla: "KN",
+    code: "KN",
   },
   {
     name: "São Martim",
-    sigla: "MF",
+    code: "MF",
   },
   {
     name: "São Martinho",
-    sigla: "SX",
+    code: "SX",
   },
   {
     name: "São Tomé e Príncipe",
-    sigla: "ST",
+    code: "ST",
   },
   {
     name: "São Vicente e Granadinas",
-    sigla: "VC",
+    code: "VC",
   },
   {
     name: "Senegal",
-    sigla: "SN",
+    code: "SN",
   },
   {
     name: "Serra Leoa",
-    sigla: "SL",
+    code: "SL",
   },
   {
     name: "Sérvia",
-    sigla: "RS",
+    code: "RS",
   },
   {
     name: "Síria",
-    sigla: "SY",
+    code: "SY",
   },
   {
     name: "Somália",
-    sigla: "SO",
+    code: "SO",
   },
   {
     name: "Sri Lanka",
-    sigla: "LK",
+    code: "LK",
   },
   {
     name: "Suazilândia",
-    sigla: "SZ",
+    code: "SZ",
   },
   {
     name: "Sudão",
-    sigla: "SD",
+    code: "SD",
   },
   {
     name: "Sudão do Sul",
-    sigla: "SS",
+    code: "SS",
   },
   {
     name: "Suécia",
-    sigla: "SE",
+    code: "SE",
   },
   {
     name: "Suíça",
-    sigla: "CH",
+    code: "CH",
   },
   {
     name: "Suriname",
-    sigla: "SR",
+    code: "SR",
   },
   {
     name: "Svalbard",
-    sigla: "SJ",
+    code: "SJ",
   },
   {
     name: "Tadjiquistão",
-    sigla: "TJ",
+    code: "TJ",
   },
   {
     name: "Tailândia",
-    sigla: "TH",
+    code: "TH",
   },
   {
     name: "Taiwan",
-    sigla: "TW",
+    code: "TW",
   },
   {
     name: "Tanzânia",
-    sigla: "TZ",
+    code: "TZ",
   },
   {
     name: "Território Britânico do Oceano índico",
-    sigla: "IO",
+    code: "IO",
   },
   {
     name: "Territórios do Sul da França",
-    sigla: "TF",
+    code: "TF",
   },
   {
     name: "Timor-Leste",
-    sigla: "TL",
+    code: "TL",
   },
   {
     name: "Togo",
-    sigla: "TG",
+    code: "TG",
   },
   {
     name: "Tonga",
-    sigla: "TO",
+    code: "TO",
   },
   {
     name: "Trinidad e Tobago",
-    sigla: "TT",
+    code: "TT",
   },
   {
     name: "Tristão da Cunha",
-    sigla: "TA",
+    code: "TA",
   },
   {
     name: "Tunísia",
-    sigla: "TN",
+    code: "TN",
   },
   {
     name: "Turcomenistão",
-    sigla: "TM",
+    code: "TM",
   },
   {
     name: "Turquia",
-    sigla: "TR",
+    code: "TR",
   },
   {
     name: "Tuvalu",
-    sigla: "TV",
+    code: "TV",
   },
   {
     name: "Ucrânia",
-    sigla: "UA",
+    code: "UA",
   },
   {
     name: "Uganda",
-    sigla: "UG",
+    code: "UG",
   },
   {
     name: "Uruguai",
-    sigla: "UY",
+    code: "UY",
   },
   {
     name: "Uzbequistão",
-    sigla: "UZ",
+    code: "UZ",
   },
   {
     name: "Vanuatu",
-    sigla: "VU",
+    code: "VU",
   },
   {
     name: "Vaticano",
-    sigla: "VA",
+    code: "VA",
   },
   {
     name: "Venezuela",
-    sigla: "VE",
+    code: "VE",
   },
   {
     name: "Vietnã",
-    sigla: "VN",
+    code: "VN",
   },
   {
     name: "Wallis e Futuna",
-    sigla: "WF",
+    code: "WF",
   },
   {
     name: "Zâmbia",
-    sigla: "ZM",
+    code: "ZM",
   },
   {
     name: "Zimbábue",
-    sigla: "ZW",
+    code: "ZW",
   },
 ];
