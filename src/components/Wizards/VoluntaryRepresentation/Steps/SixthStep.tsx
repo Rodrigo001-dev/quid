@@ -1,3 +1,5 @@
+import { useWizard } from "react-use-wizard";
+
 import { GenericStep } from "../../GenericStep";
 import { InputAndLabel } from "../../InputAndLabel";
 import { Select } from "../../Select";
@@ -7,15 +9,15 @@ import { conselhos } from "../../../../utils/concelho";
 import { freguesias } from "../../../../utils/freguesia";
 
 export function SixthStep() {
+  const { nextStep } = useWizard();
+
   return (
     <GenericStep
       title="Qual a sua naturalidade e nacionalidade?"
-      hasFirstButton
       firstButtonContent="Continuar."
       isPrimaryButtonFirst
-      onClickFirstButton={() => {}}
+      onClickFirstButton={() => nextStep()}
       instructions="“A naturalidade designa o lugar onde nasceu. A nacionalidade designa o país do qual é cidadão.”"
-      hasLegalBase
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >
       <div className="grid grid-cols-2 gap-8 mb-5">

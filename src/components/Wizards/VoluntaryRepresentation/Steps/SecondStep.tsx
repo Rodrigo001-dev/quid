@@ -8,10 +8,8 @@ export function SecondStep() {
   return (
     <GenericStep
       title="Atua como administrador ou gerente?"
-      hasFirstButton
       firstButtonContent="Sim."
       onClickFirstButton={() => ({})}
-      hasSecondButton
       secondButtonContent="Não, atuo a título pessoal."
       isPrimaryButtonSecond
       onClickSecondButton={() => nextStep()}

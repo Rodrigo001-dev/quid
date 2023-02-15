@@ -11,12 +11,10 @@ export function FifthStep() {
   return (
     <GenericStep
       title="Por favor, Introduza os seus dados pessoais"
-      hasFirstButton
       firstButtonContent="Continuar."
       isPrimaryButtonFirst
       onClickFirstButton={() => nextStep()}
       instructions="“O documento pelo qual se conferem poderes representativos deve conter a identificação do representado, ou seja, de quem confere os poderes.”"
-      hasLegalBase
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >
       <div className="w-screen max-w-[720px] grid grid-cols-3 mb-6">

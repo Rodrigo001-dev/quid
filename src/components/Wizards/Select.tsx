@@ -1,11 +1,16 @@
 import { conselhos } from "../../utils/concelho";
 import { countries } from "../../utils/countries";
 import { freguesias } from "../../utils/freguesia";
+import { identificationDocument } from "../../utils/identificationDocument";
 
 interface SelectProps {
   id: string;
   labelContent: string;
-  data: typeof conselhos | typeof countries | typeof freguesias;
+  data:
+    | typeof conselhos
+    | typeof countries
+    | typeof freguesias
+    | typeof identificationDocument;
 }
 
 export function Select({ id, labelContent, data }: SelectProps) {
