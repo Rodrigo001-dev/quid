@@ -5,10 +5,8 @@ interface RadioGroupProps {
   ariaLabel: string;
   firstRadioValue: string;
   secondRadioValue: string;
-  thirdRadioValue: string;
-  hasFourthRadio?: boolean;
+  thirdRadioValue?: string;
   fourthRadioValue?: string;
-  hasFifthRadio?: boolean;
   fifthRadioValue?: string;
 }
 
@@ -18,9 +16,7 @@ export function RadioGroup({
   firstRadioValue,
   secondRadioValue,
   thirdRadioValue,
-  hasFourthRadio,
   fourthRadioValue,
-  hasFifthRadio,
   fifthRadioValue,
 }: RadioGroupProps) {
   return (
@@ -31,11 +27,11 @@ export function RadioGroup({
     >
       <div className="flex items-center">
         <RadixRadioGroup.Item
-          className="w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="w-[20px] h-[20px] rounded-full shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black outline-1 outline-primary-500 cursor-default"
           value={firstRadioValue}
           id={firstRadioValue}
         >
-          <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-primary-500" />
+          <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-[50%] after:bg-primary-500" />
         </RadixRadioGroup.Item>
         <label
           className="text-text-500 text-[15px] leading-none pl-[15px]"
@@ -47,11 +43,11 @@ export function RadioGroup({
 
       <div className="flex items-center">
         <RadixRadioGroup.Item
-          className="w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="w-[20px] h-[20px] rounded-full shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black outline-1 outline-primary-500 cursor-default"
           value={secondRadioValue}
           id={secondRadioValue}
         >
-          <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-primary-500" />
+          <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-[50%] after:bg-primary-500" />
         </RadixRadioGroup.Item>
         <label
           className="text-text-500 text-[15px] leading-none pl-[15px]"
@@ -61,30 +57,32 @@ export function RadioGroup({
         </label>
       </div>
 
-      <div className="flex items-center">
-        <RadixRadioGroup.Item
-          className="w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
-          value={thirdRadioValue}
-          id={thirdRadioValue}
-        >
-          <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-primary-500" />
-        </RadixRadioGroup.Item>
-        <label
-          className="text-text-500 text-[15px] leading-none pl-[15px]"
-          htmlFor={thirdRadioValue}
-        >
-          {thirdRadioValue}
-        </label>
-      </div>
-
-      {hasFourthRadio && (
+      {thirdRadioValue && (
         <div className="flex items-center">
           <RadixRadioGroup.Item
-            className="w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+            className="w-[20px] h-[20px] rounded-full shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black outline-1 outline-primary-500 cursor-default"
+            value={thirdRadioValue}
+            id={thirdRadioValue}
+          >
+            <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-[50%] after:bg-primary-500" />
+          </RadixRadioGroup.Item>
+          <label
+            className="text-text-500 text-[15px] leading-none pl-[15px]"
+            htmlFor={thirdRadioValue}
+          >
+            {thirdRadioValue}
+          </label>
+        </div>
+      )}
+
+      {fourthRadioValue && (
+        <div className="flex items-center">
+          <RadixRadioGroup.Item
+            className="w-[20px] h-[20px] rounded-full shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black outline-1 outline-primary-500 cursor-default"
             value={fourthRadioValue}
             id={fourthRadioValue}
           >
-            <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-primary-500" />
+            <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-[50%] after:bg-primary-500" />
           </RadixRadioGroup.Item>
           <label
             className="text-text-500 text-[15px] leading-none pl-[15px]"
@@ -95,14 +93,14 @@ export function RadioGroup({
         </div>
       )}
 
-      {hasFifthRadio && (
+      {fifthRadioValue && (
         <div className="flex items-center">
           <RadixRadioGroup.Item
-            className="w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+            className="w-[20px] h-[20px] rounded-full shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black outline-1 outline-primary-500 cursor-default"
             value={fifthRadioValue}
             id={fifthRadioValue}
           >
-            <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-primary-500" />
+            <RadixRadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-[50%] after:bg-primary-500" />
           </RadixRadioGroup.Item>
           <label
             className="text-text-500 text-[15px] leading-none pl-[15px]"

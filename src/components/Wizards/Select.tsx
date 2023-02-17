@@ -24,7 +24,7 @@ export function Select({ id, labelContent, data }: SelectProps) {
       </label>
       <select
         id={id}
-        className="bg-[#F3F3F3] border border-gray-300 text-text-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 w-60 p-2.5"
+        className="bg-[#F3F3F3] border-2 border-primary-500 text-text-500 text-sm rounded-lg focus:ring-primary-200 focus:border-primary-200 w-60 p-2.5"
       >
         <option defaultChecked>{labelContent}</option>
         {data.map((item) => {
