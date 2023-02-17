@@ -1,9 +1,9 @@
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
-import { RadioGroup } from "../../RadioGroup";
-import { GenericStep } from "../../GenericStep";
-import { InputAndLabel } from "../../InputAndLabel";
+import { RadioGroup } from "../../../RadioGroup";
+import { GenericStep } from "../../../GenericStep";
+import { InputAndLabel } from "../../../InputAndLabel";
 
 export function FifthStep() {
   const { nextStep } = useWizard();
@@ -12,7 +12,6 @@ export function FifthStep() {
     <GenericStep
       title="Por favor, Introduza os seus dados pessoais"
       firstButtonContent="Continuar."
-      isPrimaryButtonFirst
       onClickFirstButton={() => nextStep()}
       instructions="“O documento pelo qual se conferem poderes representativos deve conter a identificação do representado, ou seja, de quem confere os poderes.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
@@ -39,9 +38,7 @@ export function FifthStep() {
             firstRadioValue="Solteiro(a)."
             secondRadioValue="Casado(a)."
             thirdRadioValue="Unido(a) de facto."
-            hasFourthRadio
             fourthRadioValue="Divorciado(a)."
-            hasFifthRadio
             fifthRadioValue="Viúvo(a)."
           />
         </section>

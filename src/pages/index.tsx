@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header isHomePage />
-      <div className="h-screen overflow-hidden bg-[url('/assets/bg-img.svg')] bg-contain bg-no-repeat bg-right-bottom">
+      <div className="min-h-screen flex flex-col justify-between overflow-hidden bg-[url('/assets/bg-img.svg')] bg-contain bg-no-repeat bg-right-bottom">
         <main className="max-w-[1440px] mt-72 ml-32 text-text-500">
           <h1 className="text-5xl text-bold font-bold pb-11">
             Somos facilitadores de <br /> processos jurídicos.
@@ -30,6 +30,10 @@ export default function Home() {
             <span className="text-lg ml-10">Tem dúvidas? Nós ajudamos.</span>
           </div>
         </main>
+
+        <footer className="ml-32 mb-9">
+          Copyright © 2023 Quid. All right reserved. Políticas de Privacidade
+        </footer>
       </div>
     </>
   );

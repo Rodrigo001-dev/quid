@@ -1,6 +1,6 @@
 import { useWizard } from "react-use-wizard";
 
-import { GenericStep } from "../../GenericStep";
+import { GenericStep } from "../../../GenericStep";
 
 export function FirstStep() {
   const { nextStep } = useWizard();
@@ -10,7 +10,6 @@ export function FirstStep() {
       title="Pretende redigir uma procuração?"
       firstButtonContent="Sim."
       onClickFirstButton={() => nextStep()}
-      isPrimaryButtonFirst
       secondButtonContent="Não tenho a certeza."
       onClickSecondButton={() => ({})}
       instructions="“Diz-se procuração o ato pelo qual alguém atribui a outrem, voluntariamente, poderes de representação. O procurador poderá agir em nome do representado dentro dos limites dos poderes conferidos.”"

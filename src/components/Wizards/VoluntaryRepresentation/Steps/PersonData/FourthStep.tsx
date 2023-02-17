@@ -1,6 +1,6 @@
 import { useWizard } from "react-use-wizard";
 
-import { GenericStep } from "../../GenericStep";
+import { GenericStep } from "../../../GenericStep";
 
 export function FourthStep() {
   const { nextStep } = useWizard();
@@ -10,7 +10,6 @@ export function FourthStep() {
       title="O ato ou negócio a praticar pelo procurador exige forma especial?"
       firstButtonContent="Sim."
       onClickFirstButton={() => {}}
-      isPrimaryButtonSecond
       secondButtonContent="Não."
       onClickSecondButton={() => nextStep()}
       thirdButtonContent="Não tenho a certeza."
