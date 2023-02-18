@@ -1,9 +1,11 @@
 import { useWizard } from "react-use-wizard";
+import { useRouter } from "next/router";
 
-import { GenericStep } from "../../../GenericStep";
+import { GenericStep } from "@/components/Wizards/GenericStep";
 
 export function FirstStep() {
   const { nextStep } = useWizard();
+  const router = useRouter();
 
   return (
     <GenericStep
@@ -11,7 +13,7 @@ export function FirstStep() {
       firstButtonContent="Sim."
       onClickFirstButton={() => nextStep()}
       secondButtonContent="Não tenho a certeza."
-      onClickSecondButton={() => ({})}
+      onClickSecondButton={() => router.push("/functionofthepowerofattorney")}
       instructions="“Diz-se procuração o ato pelo qual alguém atribui a outrem, voluntariamente, poderes de representação. O procurador poderá agir em nome do representado dentro dos limites dos poderes conferidos.”"
       legalBase="Art. 262.º, n.º 1 do CC"
     />

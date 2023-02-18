@@ -13,7 +13,7 @@ export function FifteenthStep() {
       title="Algumas informações adicionais sobre o(s) procurador(es)"
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
-      instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.” <br /><br /> “A data de produção de efeitos é a data a partir da qual o procurador pode agir em nome do representado ao abrigo desta procuração.”"
+      instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.” <br /><br /> “A data de produção de efeitos é a data a partir da qual o procurador pode agir em nome do representado ao abrigo desta procuração.” <br /><br /> “Por favor, indique a data que pretende dar à procuração e o local em que a deverá assinar. Os documentos devem ter a data da sua assinatura.”"
       legalBase="Art. 264.º, n.º 1 do CC <br />Art. 261.º, n.º 1 do CC"
     >
       <div className="grid grid-rows-3 gap-5 justify-center">
@@ -47,12 +47,27 @@ export function FifteenthStep() {
           />
         </section>
 
-        <section className="mb-6">
+        <section>
           <InputAndLabel
             id="dateOfPowerOfAttorney"
             labelContent="A partir de que data a produção deve produzir efeitos?"
-            placeholder="Data da procuração"
+            placeholder="Data de efeito da procuração"
             type="date"
+          />
+        </section>
+
+        <section className="mb-6 grid grid-cols-2">
+          <InputAndLabel
+            id="dateOfAttorney"
+            labelContent="Qual a data da procuração?"
+            placeholder="Selecione a data da procuração"
+            type="date"
+          />
+
+          <InputAndLabel
+            id="placeOfAttorney"
+            labelContent="Qual o local da procuração?"
+            placeholder="Digite o local"
           />
         </section>
       </div>

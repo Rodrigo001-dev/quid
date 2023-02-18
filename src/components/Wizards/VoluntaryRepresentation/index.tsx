@@ -16,6 +16,7 @@ import { TwelfthStep } from "./Steps/AttorneyData/TwelfthStep";
 import { ThirteenthStep } from "./Steps/AttorneyData/ThirteenthStep";
 import { FourteenthStep } from "./Steps/AttorneyData/FourteenthStep";
 import { FifteenthStep } from "./Steps/AttorneyData/FifteenthStep";
+import { SixteenthStep } from "./Steps/AttorneyData/SixteenthStep";
 
 export function VoluntaryRepresentation() {
   return (
@@ -36,6 +37,7 @@ export function VoluntaryRepresentation() {
       <ThirteenthStep />
       <FourteenthStep />
       <FifteenthStep />
+      <SixteenthStep />
     </Wizard>
   );
 }
