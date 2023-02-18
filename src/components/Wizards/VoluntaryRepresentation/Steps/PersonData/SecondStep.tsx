@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function SecondStep() {
+export function AdministratorOrManagerStep() {
   const { nextStep } = useWizard();
 
   return (

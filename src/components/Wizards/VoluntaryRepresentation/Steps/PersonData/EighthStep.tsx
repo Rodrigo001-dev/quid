@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function EighthStep() {
+export function CurrentResidenceStep() {
   const { nextStep } = useWizard();
 
   return (

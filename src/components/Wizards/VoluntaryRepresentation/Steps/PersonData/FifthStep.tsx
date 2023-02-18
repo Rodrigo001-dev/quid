@@ -5,7 +5,7 @@ import { RadioGroup } from "../../../RadioGroup";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 
-export function FifthStep() {
+export function PersonalDataStep() {
   const { nextStep } = useWizard();
 
   return (

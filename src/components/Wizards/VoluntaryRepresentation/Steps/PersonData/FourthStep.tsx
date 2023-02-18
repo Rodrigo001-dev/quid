@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function FourthStep() {
+export function SpecialCaseStep() {
   const { nextStep } = useWizard();
 
   return (

@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function ThirdStep() {
+export function PowersIntendsConfer() {
   const { nextStep } = useWizard();
 
   return (

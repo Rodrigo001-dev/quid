@@ -8,7 +8,7 @@ import { countries } from "../../../../../utils/countries";
 import { conselhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
 
-export function SixthStep() {
+export function PlaceOfBirthAndNationalityStep() {
   const { nextStep } = useWizard();
 
   return (

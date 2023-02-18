@@ -1,43 +1,45 @@
 import { Wizard } from "react-use-wizard";
 
-import { FirstStep } from "./Steps/PersonData/FirstStep";
-import { SecondStep } from "./Steps/PersonData/SecondStep";
-import { ThirdStep } from "./Steps/PersonData/ThirdStep";
-import { FourthStep } from "./Steps/PersonData/FourthStep";
-import { FifthStep } from "./Steps/PersonData/FifthStep";
-import { SixthStep } from "./Steps/PersonData/SixthStep";
-import { SeventhStep } from "./Steps/PersonData/SeventhStep";
-import { EighthStep } from "./Steps/PersonData/EighthStep";
-import { NinthStep } from "./Steps/PersonData/NinthStep";
+// Customer
+import { ApplyForPowerOfAttorneyStep } from "./Steps/PersonData/FirstStep";
+import { AdministratorOrManagerStep } from "./Steps/PersonData/SecondStep";
+import { PowersIntendsConfer } from "./Steps/PersonData/ThirdStep";
+import { SpecialCaseStep } from "./Steps/PersonData/FourthStep";
+import { PersonalDataStep } from "./Steps/PersonData/FifthStep";
+import { PlaceOfBirthAndNationalityStep } from "./Steps/PersonData/SixthStep";
+import { CivilIdentificationStep } from "./Steps/PersonData/SeventhStep";
+import { CurrentResidenceStep } from "./Steps/PersonData/EighthStep";
+import { BreakpointStep } from "./Steps/PersonData/NinthStep";
 
-import { TenthStep } from "./Steps/AttorneyData/TenthStep";
-import { EleventhStep } from "./Steps/AttorneyData/EleventhStep";
-import { TwelfthStep } from "./Steps/AttorneyData/TwelfthStep";
-import { ThirteenthStep } from "./Steps/AttorneyData/ThirteenthStep";
-import { FourteenthStep } from "./Steps/AttorneyData/FourteenthStep";
-import { FifteenthStep } from "./Steps/AttorneyData/FifteenthStep";
-import { SixteenthStep } from "./Steps/AttorneyData/SixteenthStep";
+// Attorney
+import { AttorneyPersonalDataStep } from "./Steps/AttorneyData/TenthStep";
+import { PlaceOfBirthAndNationalityAttorneyStep } from "./Steps/AttorneyData/EleventhStep";
+import { AttorneyCivilIdentificationStep } from "./Steps/AttorneyData/TwelfthStep";
+import { AttorneyCurrentResidenceStep } from "./Steps/AttorneyData/ThirteenthStep";
+import { AddMoreAttorneyStep } from "./Steps/AttorneyData/FourteenthStep";
+import { AdditionalInformationStep } from "./Steps/AttorneyData/FifteenthStep";
+import { DeadlinePowerOfAttorneyStep } from "./Steps/AttorneyData/SixteenthStep";
 
 export function VoluntaryRepresentation() {
   return (
     <Wizard>
-      <FirstStep />
-      <SecondStep />
-      <ThirdStep />
-      <FourthStep />
-      <FifthStep />
-      <SixthStep />
-      <SeventhStep />
-      <EighthStep />
-      <NinthStep />
+      <ApplyForPowerOfAttorneyStep />
+      <AdministratorOrManagerStep />
+      <PowersIntendsConfer />
+      <SpecialCaseStep />
+      <PersonalDataStep />
+      <PlaceOfBirthAndNationalityStep />
+      <CivilIdentificationStep />
+      <CurrentResidenceStep />
+      <BreakpointStep />
 
-      <TenthStep />
-      <EleventhStep />
-      <TwelfthStep />
-      <ThirteenthStep />
-      <FourteenthStep />
-      <FifteenthStep />
-      <SixteenthStep />
+      <AttorneyPersonalDataStep />
+      <PlaceOfBirthAndNationalityAttorneyStep />
+      <AttorneyCivilIdentificationStep />
+      <AttorneyCurrentResidenceStep />
+      <AddMoreAttorneyStep />
+      <AdditionalInformationStep />
+      <DeadlinePowerOfAttorneyStep />
     </Wizard>
   );
 }

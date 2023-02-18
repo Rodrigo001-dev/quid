@@ -7,7 +7,7 @@ import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 import { identificationDocument } from "@/utils/identificationDocument";
 import { countries } from "@/utils/countries";
 
-export function TwelfthStep() {
+export function AttorneyCivilIdentificationStep() {
   const { nextStep } = useWizard();
 
   return (

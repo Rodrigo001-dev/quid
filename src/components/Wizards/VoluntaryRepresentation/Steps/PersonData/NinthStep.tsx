@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { Button } from "../../../Button";
 
-export function NinthStep() {
+export function BreakpointStep() {
   const { nextStep } = useWizard();
 
   return (

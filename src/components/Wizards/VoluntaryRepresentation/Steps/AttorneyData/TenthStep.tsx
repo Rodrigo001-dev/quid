@@ -5,7 +5,7 @@ import { GenericStep } from "@/components/Wizards/GenericStep";
 import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 import { RadioGroup } from "@/components/Wizards/RadioGroup";
 
-export function TenthStep() {
+export function AttorneyPersonalDataStep() {
   const { nextStep } = useWizard();
 
   return (

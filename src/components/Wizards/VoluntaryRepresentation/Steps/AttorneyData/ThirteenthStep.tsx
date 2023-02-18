@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function ThirteenthStep() {
+export function AttorneyCurrentResidenceStep() {
   const { nextStep } = useWizard();
 
   return (

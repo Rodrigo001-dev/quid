@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { GenericStep } from "@/components/Wizards/GenericStep";
 
-export function FirstStep() {
+export function ApplyForPowerOfAttorneyStep() {
   const { nextStep } = useWizard();
   const router = useRouter();
 

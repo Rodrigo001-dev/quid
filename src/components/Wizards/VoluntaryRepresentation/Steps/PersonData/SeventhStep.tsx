@@ -7,7 +7,7 @@ import { Select } from "../../../Select";
 import { countries } from "@/utils/countries";
 import { identificationDocument } from "@/utils/identificationDocument";
 
-export function SeventhStep() {
+export function CivilIdentificationStep() {
   const { nextStep } = useWizard();
 
   return (
