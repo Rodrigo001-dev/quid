@@ -18,10 +18,12 @@ export function Modal({
   onClickSecondButton,
 }: ModalProps) {
   return (
-    <div className="fixed top-[50%] left-[50%] max-h-[480px] max-w-[786px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+    <section className="fixed top-[50%] left-[50%] max-h-[480px] max-w-[786px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
       <div className="rounded-lg p-6">
-        <div className="text-3xl font-bold text-center mb-12">{title}</div>
-        <div className="text-lg leading-normal">{description}</div>
+        <strong className="text-3xl flex items-center justify-center font-bold text-center mb-12">
+          {title}
+        </strong>
+        <p className="text-lg leading-normal">{description}</p>
         {secondButtonContent ? (
           <div className="flex justify-center gap-8 my-12">
             <button
@@ -48,6 +50,6 @@ export function Modal({
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

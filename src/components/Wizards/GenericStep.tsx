@@ -48,7 +48,7 @@ export function GenericStep({
         )}
       </div>
 
-      <div className="w-full text-text-500 text-lg space-y-8">
+      <div className="w-full text-text-500 text-lg space-y-8 mb-4">
         {instructions && (
           <div>
             <strong className="font-bold">Instruções</strong>
