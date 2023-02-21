@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -9,6 +10,8 @@ import { conselhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
 
 export function PlaceOfBirthAndNationalityStep() {
+  const [personNationality, setPersonNationality] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -25,6 +28,8 @@ export function PlaceOfBirthAndNationalityStep() {
             id="personNationality"
             labelContent="Qual sua nacionalidade"
             placeholder="Nacionalidade"
+            value={personNationality}
+            onChange={(event) => setPersonNationality(event.target.value)}
           />
         </section>
 

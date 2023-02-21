@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
@@ -6,6 +7,8 @@ import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 import { RadioGroup } from "@/components/Wizards/RadioGroup";
 
 export function AttorneyPersonalDataStep() {
+  const [attorneyName, setAttorneyName] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -22,6 +25,8 @@ export function AttorneyPersonalDataStep() {
             id="attorneyName"
             labelContent="Nome do procurador"
             placeholder="Nome completo"
+            value={attorneyName}
+            onChange={(event) => setAttorneyName(event.target.value)}
           />
         </section>
 

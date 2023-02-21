@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "@/components/Wizards/GenericStep";
@@ -8,6 +9,11 @@ import { identificationDocument } from "@/utils/identificationDocument";
 import { countries } from "@/utils/countries";
 
 export function AttorneyCivilIdentificationStep() {
+  const [attorneyRegistrationCalendar, setAttorneyRegistrationCalendar] =
+    useState("");
+  const [attorneyTaxIdentificationNumber, setAttorneyTaxIdentificationNumber] =
+    useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -36,6 +42,10 @@ export function AttorneyCivilIdentificationStep() {
             labelContent="Calendário sobre a inscrição"
             placeholder="Inscrição"
             type="date"
+            value={attorneyRegistrationCalendar}
+            onChange={(event) =>
+              setAttorneyRegistrationCalendar(event.target.value)
+            }
           />
         </section>
 
@@ -48,6 +58,10 @@ export function AttorneyCivilIdentificationStep() {
             id="taxIdentificationNumber"
             labelContent="Número de Identificação Fiscal"
             placeholder="Identificação Fiscal"
+            value={attorneyTaxIdentificationNumber}
+            onChange={(event) =>
+              setAttorneyTaxIdentificationNumber(event.target.value)
+            }
           />
         </section>
       </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -9,6 +10,8 @@ import { conselhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
 
 export function PlaceOfBirthAndNationalityAttorneyStep() {
+  const [attorneyNationality, setAttorneyNationality] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -25,6 +28,8 @@ export function PlaceOfBirthAndNationalityAttorneyStep() {
             id="attorneyNationality"
             labelContent="Qual a nacionalidade do procurador"
             placeholder="Nacionalidade"
+            value={attorneyNationality}
+            onChange={(event) => setAttorneyNationality(event.target.value)}
           />
         </section>
 

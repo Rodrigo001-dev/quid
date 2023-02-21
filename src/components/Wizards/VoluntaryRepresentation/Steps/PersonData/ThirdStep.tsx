@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
 export function PowersIntendsConfer() {
+  const [powers, setPowers] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -15,9 +18,12 @@ export function PowersIntendsConfer() {
       <textarea
         className="max-w-[630px] resize-none bg-[#F3F3F3] text-text-500 text-lg font-normal border-2 border-primary-500 pl-6 pr-3 py-5 rounded-lg mb-6"
         id="poderes"
+        placeholder="Digite os poderes"
         cols={59}
         rows={4}
         autoFocus
+        value={powers}
+        onChange={(event) => setPowers(event.target.value)}
       />
     </GenericStep>
   );

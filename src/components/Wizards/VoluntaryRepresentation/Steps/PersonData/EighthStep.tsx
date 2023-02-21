@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
 export function CurrentResidenceStep() {
+  const [habitualResidence, setHabitualResidence] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -19,6 +22,8 @@ export function CurrentResidenceStep() {
         cols={59}
         rows={4}
         autoFocus
+        value={habitualResidence}
+        onChange={(event) => setHabitualResidence(event.target.value)}
       />
     </GenericStep>
   );

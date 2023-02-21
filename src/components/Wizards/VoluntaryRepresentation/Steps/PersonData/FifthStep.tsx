@@ -4,8 +4,11 @@ import * as Label from "@radix-ui/react-label";
 import { RadioGroup } from "../../../RadioGroup";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
+import { useState } from "react";
 
 export function PersonalDataStep() {
+  const [personName, setPersonName] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -22,6 +25,8 @@ export function PersonalDataStep() {
             id="personName"
             labelContent="Indique o seu nome"
             placeholder="Nome completo"
+            value={personName}
+            onChange={(event) => setPersonName(event.target.value)}
           />
         </section>
 

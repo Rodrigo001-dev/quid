@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute } from "react";
+import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import * as Label from "@radix-ui/react-label";
 
 interface InputAndLabelProps {
@@ -6,6 +6,8 @@ interface InputAndLabelProps {
   placeholder: string;
   id: string;
   type?: HTMLInputTypeAttribute;
+  value: string | number | readonly string[] | undefined;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 export function InputAndLabel({
@@ -13,6 +15,8 @@ export function InputAndLabel({
   labelContent,
   type,
   placeholder,
+  value,
+  onChange,
 }: InputAndLabelProps) {
   return (
     <div className="flex flex-col flex-wrap px-5">
@@ -27,6 +31,8 @@ export function InputAndLabel({
         type={type ? type : "text"}
         placeholder={placeholder}
         id={id}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

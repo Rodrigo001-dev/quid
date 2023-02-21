@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
 export function AttorneyCurrentResidenceStep() {
+  const [attorneyHabitualResidence, setAttorneyHabitualResidence] =
+    useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -19,6 +23,8 @@ export function AttorneyCurrentResidenceStep() {
         cols={59}
         rows={4}
         autoFocus
+        value={attorneyHabitualResidence}
+        onChange={(event) => setAttorneyHabitualResidence(event.target.value)}
       />
     </GenericStep>
   );

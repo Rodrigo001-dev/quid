@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
@@ -6,6 +7,10 @@ import { RadioGroup } from "@/components/Wizards/RadioGroup";
 import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 
 export function AdditionalInformationStep() {
+  const [dateOfPowerOfAttorney, setDateOfPowerOfAttorney] = useState("");
+  const [dateOfAttorney, setDateOfAttorney] = useState("");
+  const [placeOfAttorney, setPlaceOfAttorney] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -53,6 +58,8 @@ export function AdditionalInformationStep() {
             labelContent="A partir de que data a produção deve produzir efeitos?"
             placeholder="Data de efeito da procuração"
             type="date"
+            value={dateOfPowerOfAttorney}
+            onChange={(event) => setDateOfPowerOfAttorney(event.target.value)}
           />
         </section>
 
@@ -62,12 +69,16 @@ export function AdditionalInformationStep() {
             labelContent="Qual a data da procuração?"
             placeholder="Selecione a data da procuração"
             type="date"
+            value={dateOfAttorney}
+            onChange={(event) => setDateOfAttorney(event.target.value)}
           />
 
           <InputAndLabel
             id="placeOfAttorney"
             labelContent="Qual o local da procuração?"
             placeholder="Digite o local"
+            value={placeOfAttorney}
+            onChange={(event) => setPlaceOfAttorney(event.target.value)}
           />
         </section>
       </div>

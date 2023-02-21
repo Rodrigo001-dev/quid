@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -8,6 +9,9 @@ import { countries } from "@/utils/countries";
 import { identificationDocument } from "@/utils/identificationDocument";
 
 export function CivilIdentificationStep() {
+  const [registrationCalendar, setRegistrationCalendar] = useState("");
+  const [taxIdentificationNumber, setTaxIdentificationNumber] = useState("");
+
   const { nextStep } = useWizard();
 
   return (
@@ -36,6 +40,8 @@ export function CivilIdentificationStep() {
             labelContent="Calendário sobre a inscrição"
             placeholder="Inscrição"
             type="date"
+            value={registrationCalendar}
+            onChange={(event) => setRegistrationCalendar(event.target.value)}
           />
         </section>
 
@@ -48,6 +54,8 @@ export function CivilIdentificationStep() {
             id="taxIdentificationNumber"
             labelContent="Número de Identificação Fiscal"
             placeholder="Identificação Fiscal"
+            value={taxIdentificationNumber}
+            onChange={(event) => setTaxIdentificationNumber(event.target.value)}
           />
         </section>
       </div>
