@@ -4,10 +4,12 @@ import * as Label from "@radix-ui/react-label";
 import { RadioGroup } from "../../../RadioGroup";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
-import { useState } from "react";
+
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 export function PersonalDataStep() {
-  const [personName, setPersonName] = useState("");
+  const { personName, setPersonName, setPersonMaritalStatus, setPersonGender } =
+    useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -45,6 +47,7 @@ export function PersonalDataStep() {
             thirdRadioValue="Unido(a) de facto."
             fourthRadioValue="Divorciado(a)."
             fifthRadioValue="Viúvo(a)."
+            onValueChange={(value) => setPersonMaritalStatus(value)}
           />
         </section>
 
@@ -61,6 +64,7 @@ export function PersonalDataStep() {
             firstRadioValue="Ele/dele"
             secondRadioValue="Ela/dela"
             thirdRadioValue="Elu/delu"
+            onValueChange={(value) => setPersonGender(value)}
           />
         </section>
       </div>

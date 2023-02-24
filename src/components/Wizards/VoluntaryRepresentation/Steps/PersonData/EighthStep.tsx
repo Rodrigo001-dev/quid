@@ -3,8 +3,11 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 export function CurrentResidenceStep() {
-  const [habitualResidence, setHabitualResidence] = useState("");
+  const { personHabitualResidence, setPersonHabitualResidence } =
+    useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -22,8 +25,8 @@ export function CurrentResidenceStep() {
         cols={59}
         rows={4}
         autoFocus
-        value={habitualResidence}
-        onChange={(event) => setHabitualResidence(event.target.value)}
+        value={personHabitualResidence}
+        onChange={(event) => setPersonHabitualResidence(event.target.value)}
       />
     </GenericStep>
   );

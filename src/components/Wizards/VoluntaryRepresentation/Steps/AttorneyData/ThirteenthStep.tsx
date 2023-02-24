@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
 export function AttorneyCurrentResidenceStep() {
-  const [attorneyHabitualResidence, setAttorneyHabitualResidence] =
-    useState("");
+  const { attorneyHabitualResidence, setAttorneyHabitualResidence } =
+    useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 

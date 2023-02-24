@@ -6,11 +6,22 @@ import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 
 import { countries } from "../../../../../utils/countries";
-import { conselhos } from "../../../../../utils/concelho";
+import { concelhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 export function PlaceOfBirthAndNationalityAttorneyStep() {
-  const [attorneyNationality, setAttorneyNationality] = useState("");
+  const {
+    attorneyNationality,
+    setAttorneyNationality,
+    attorneyCountry,
+    setAttorneyCountry,
+    attorneyConcelho,
+    setAttorneyConcelho,
+    attorneyFreguesia,
+    setAttorneyFreguesia,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -38,6 +49,8 @@ export function PlaceOfBirthAndNationalityAttorneyStep() {
             id="country"
             labelContent="Escolha um país"
             data={countries}
+            value={attorneyCountry}
+            onChange={(event) => setAttorneyCountry(event.target.value)}
           />
         </section>
 
@@ -45,7 +58,9 @@ export function PlaceOfBirthAndNationalityAttorneyStep() {
           <Select
             id="concelho"
             labelContent="Escolha um concelho"
-            data={conselhos}
+            data={concelhos}
+            value={attorneyConcelho}
+            onChange={(event) => setAttorneyConcelho(event.target.value)}
           />
         </section>
 
@@ -54,6 +69,8 @@ export function PlaceOfBirthAndNationalityAttorneyStep() {
             id="freguesia"
             labelContent="Escolha uma freguesia"
             data={freguesias}
+            value={attorneyFreguesia}
+            onChange={(event) => setAttorneyFreguesia(event.target.value)}
           />
         </section>
       </div>

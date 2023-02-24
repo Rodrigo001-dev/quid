@@ -8,11 +8,19 @@ import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 import { identificationDocument } from "@/utils/identificationDocument";
 import { countries } from "@/utils/countries";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 export function AttorneyCivilIdentificationStep() {
-  const [attorneyRegistrationCalendar, setAttorneyRegistrationCalendar] =
-    useState("");
-  const [attorneyTaxIdentificationNumber, setAttorneyTaxIdentificationNumber] =
-    useState("");
+  const {
+    attorneyDocument,
+    setAttorneyDocument,
+    attorneyRegistrationCalendar,
+    setAttorneyRegistrationCalendar,
+    attorneyTaxIdentificationNumber,
+    setAttorneyTaxIdentificationNumber,
+    attorneyIssuingCountry,
+    setAttorneyIssuingCountry,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -28,6 +36,8 @@ export function AttorneyCivilIdentificationStep() {
             id="identificationDocumentAttorney"
             labelContent="Documento de identificação"
             data={identificationDocument}
+            value={attorneyDocument}
+            onChange={(event) => setAttorneyDocument(event.target.value)}
           />
           <input
             className="inline-flex h-[35px] w-60 appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-text-500 shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
@@ -50,7 +60,13 @@ export function AttorneyCivilIdentificationStep() {
         </section>
 
         <section>
-          <Select id="country" labelContent="País emissor" data={countries} />
+          <Select
+            id="country"
+            labelContent="País emissor"
+            data={countries}
+            value={attorneyIssuingCountry}
+            onChange={(event) => setAttorneyIssuingCountry(event.target.value)}
+          />
         </section>
 
         <section>

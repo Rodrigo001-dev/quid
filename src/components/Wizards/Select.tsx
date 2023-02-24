@@ -1,4 +1,5 @@
-import { conselhos } from "../../utils/concelho";
+import { ChangeEventHandler } from "react";
+import { concelhos } from "../../utils/concelho";
 import { countries } from "../../utils/countries";
 import { freguesias } from "../../utils/freguesia";
 import { identificationDocument } from "../../utils/identificationDocument";
@@ -7,13 +8,21 @@ interface SelectProps {
   id: string;
   labelContent: string;
   data:
-    | typeof conselhos
+    | typeof concelhos
     | typeof countries
     | typeof freguesias
     | typeof identificationDocument;
+  value: string | undefined;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
 }
 
-export function Select({ id, labelContent, data }: SelectProps) {
+export function Select({
+  id,
+  labelContent,
+  data,
+  value,
+  onChange,
+}: SelectProps) {
   return (
     <div className="flex flex-col">
       <label
@@ -25,6 +34,8 @@ export function Select({ id, labelContent, data }: SelectProps) {
       <select
         id={id}
         className="bg-[#F3F3F3] border-2 border-primary-500 text-text-500 text-sm rounded-lg focus:ring-primary-200 focus:border-primary-200 w-60 p-2.5"
+        value={value}
+        onChange={onChange}
       >
         <option defaultChecked>{labelContent}</option>
         {data.map((item) => {

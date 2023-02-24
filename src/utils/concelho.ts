@@ -1,4 +1,4 @@
-export const conselhos = [
+export const concelhos = [
   {
     code: 101,
     name: "Águeda",

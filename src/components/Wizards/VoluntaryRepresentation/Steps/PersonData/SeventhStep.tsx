@@ -5,12 +5,22 @@ import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 import { countries } from "@/utils/countries";
 import { identificationDocument } from "@/utils/identificationDocument";
 
 export function CivilIdentificationStep() {
-  const [registrationCalendar, setRegistrationCalendar] = useState("");
-  const [taxIdentificationNumber, setTaxIdentificationNumber] = useState("");
+  const {
+    registrationCalendar,
+    setRegistrationCalendar,
+    taxIdentificationNumber,
+    setTaxIdentificationNumber,
+    personDocument,
+    setPersonDocument,
+    personIssuingCountry,
+    setPersonIssuingCountry,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -26,6 +36,8 @@ export function CivilIdentificationStep() {
             id="identificationDocument"
             labelContent="Documento de identificação"
             data={identificationDocument}
+            value={personDocument}
+            onChange={(event) => setPersonDocument(event.target.value)}
           />
           <input
             className="inline-flex h-[35px] w-60 appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-text-500 shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
@@ -46,7 +58,13 @@ export function CivilIdentificationStep() {
         </section>
 
         <section>
-          <Select id="country" labelContent="País emissor" data={countries} />
+          <Select
+            id="country"
+            labelContent="País emissor"
+            data={countries}
+            value={personIssuingCountry}
+            onChange={(event) => setPersonIssuingCountry(event.target.value)}
+          />
         </section>
 
         <section>

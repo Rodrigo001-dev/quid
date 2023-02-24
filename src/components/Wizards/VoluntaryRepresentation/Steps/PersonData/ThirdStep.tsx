@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 import { GenericStep } from "../../../GenericStep";
 
 export function PowersIntendsConfer() {
-  const [powers, setPowers] = useState("");
+  const { powers, setPowers } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 

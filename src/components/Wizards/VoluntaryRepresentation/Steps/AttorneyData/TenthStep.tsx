@@ -6,8 +6,15 @@ import { GenericStep } from "@/components/Wizards/GenericStep";
 import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 import { RadioGroup } from "@/components/Wizards/RadioGroup";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 export function AttorneyPersonalDataStep() {
-  const [attorneyName, setAttorneyName] = useState("");
+  const {
+    attorneyName,
+    setAttorneyName,
+    setAttorneyMaritalStatus,
+    setAttorneyGender,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -45,6 +52,7 @@ export function AttorneyPersonalDataStep() {
             thirdRadioValue="Unido(a) de facto."
             fourthRadioValue="Divorciado(a)."
             fifthRadioValue="Viúvo(a)."
+            onValueChange={(value) => setAttorneyMaritalStatus(value)}
           />
         </section>
 
@@ -61,6 +69,7 @@ export function AttorneyPersonalDataStep() {
             firstRadioValue="Ele/dele"
             secondRadioValue="Ela/dela"
             thirdRadioValue="Elu/delu"
+            onValueChange={(value) => setAttorneyGender(value)}
           />
         </section>
       </div>

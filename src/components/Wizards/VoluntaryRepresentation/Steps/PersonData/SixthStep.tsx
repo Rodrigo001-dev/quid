@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -6,11 +5,21 @@ import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 
 import { countries } from "../../../../../utils/countries";
-import { conselhos } from "../../../../../utils/concelho";
+import { concelhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 export function PlaceOfBirthAndNationalityStep() {
-  const [personNationality, setPersonNationality] = useState("");
+  const {
+    personNationality,
+    setPersonNationality,
+    personCountry,
+    setPersonCountry,
+    personConcelho,
+    setPersonConcelho,
+    personFreguesia,
+    setPersonFreguesia,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -38,6 +47,8 @@ export function PlaceOfBirthAndNationalityStep() {
             id="country"
             labelContent="Escolha um país"
             data={countries}
+            value={personCountry}
+            onChange={(event) => setPersonCountry(event.target.value)}
           />
         </section>
 
@@ -45,7 +56,9 @@ export function PlaceOfBirthAndNationalityStep() {
           <Select
             id="concelho"
             labelContent="Escolha um concelho"
-            data={conselhos}
+            data={concelhos}
+            value={personConcelho}
+            onChange={(event) => setPersonConcelho(event.target.value)}
           />
         </section>
 
@@ -54,6 +67,8 @@ export function PlaceOfBirthAndNationalityStep() {
             id="freguesia"
             labelContent="Escolha uma freguesia"
             data={freguesias}
+            value={personFreguesia}
+            onChange={(event) => setPersonFreguesia(event.target.value)}
           />
         </section>
       </div>

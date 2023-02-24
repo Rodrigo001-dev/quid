@@ -6,10 +6,19 @@ import { GenericStep } from "@/components/Wizards/GenericStep";
 import { RadioGroup } from "@/components/Wizards/RadioGroup";
 import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
 export function AdditionalInformationStep() {
-  const [dateOfPowerOfAttorney, setDateOfPowerOfAttorney] = useState("");
-  const [dateOfAttorney, setDateOfAttorney] = useState("");
-  const [placeOfAttorney, setPlaceOfAttorney] = useState("");
+  const {
+    dateOfPowerOfAttorney,
+    setDateOfPowerOfAttorney,
+    dateOfAttorney,
+    setDateOfAttorney,
+    placeOfAttorney,
+    setPlaceOfAttorney,
+    setReplaceWithSomeoneElse,
+    setConcludeBusinessWithYourself,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
@@ -34,6 +43,7 @@ export function AdditionalInformationStep() {
             ariaLabel="procurador se substituir por outra pessoa"
             firstRadioValue="Sim"
             secondRadioValue="Não"
+            onValueChange={(value) => setReplaceWithSomeoneElse(value)}
           />
         </section>
 
@@ -49,6 +59,7 @@ export function AdditionalInformationStep() {
             ariaLabel="procurador celebrar negócios consigo mesmo"
             firstRadioValue="Sim"
             secondRadioValue="Não"
+            onValueChange={(value) => setConcludeBusinessWithYourself(value)}
           />
         </section>
 
