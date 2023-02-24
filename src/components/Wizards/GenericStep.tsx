@@ -4,7 +4,8 @@ import { Button } from "./Button";
 
 interface GenericStepProps {
   title: string;
-  firstButtonContent: string;
+  isCheckAllDataStep?: boolean;
+  firstButtonContent?: string;
   onClickFirstButton: () => void;
   secondButtonContent?: string;
   onClickSecondButton?: () => void;
@@ -17,6 +18,7 @@ interface GenericStepProps {
 
 export function GenericStep({
   title,
+  isCheckAllDataStep,
   firstButtonContent,
   onClickFirstButton,
   secondButtonContent,
@@ -30,9 +32,15 @@ export function GenericStep({
   return (
     <div className="animate-fadeInUp max-w-4xl flex items-center justify-center flex-col">
       <div className="max-w-2xl mb-32">
-        <h2 className="font-bold text-3xl mb-10 text-center">{title}</h2>
+        <h2
+          className={`mb-10 text-center ${
+            isCheckAllDataStep ? "font-medium text-2xl" : "font-bold text-3xl"
+          }`}
+        >
+          {title}
+        </h2>
         {children}
-        {firstButtonContent && (
+        {firstButtonContent && !isCheckAllDataStep && (
           <Button onClick={onClickFirstButton} content={firstButtonContent} />
         )}
         <div className="mb-5" />
@@ -48,15 +56,19 @@ export function GenericStep({
         )}
       </div>
 
-      <div className="w-full text-text-500 text-lg space-y-8 mb-4">
-        {instructions && (
+      <div
+        className={`w-full text-text-500 text-lg space-y-8 ${
+          isCheckAllDataStep ? "-mb-8" : "mb-4"
+        }`}
+      >
+        {instructions && !isCheckAllDataStep && (
           <div>
             <strong className="font-bold">Instruções</strong>
             <p dangerouslySetInnerHTML={{ __html: instructions }}></p>
           </div>
         )}
 
-        {legalBase && (
+        {legalBase && !isCheckAllDataStep && (
           <div className="pb-4">
             <strong className="font-bold">Base Legal</strong>
             <p dangerouslySetInnerHTML={{ __html: legalBase }}></p>

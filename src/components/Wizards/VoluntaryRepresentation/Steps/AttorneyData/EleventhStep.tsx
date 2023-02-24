@@ -11,7 +11,13 @@ import { freguesias } from "../../../../../utils/freguesia";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function PlaceOfBirthAndNationalityAttorneyStep() {
+interface PlaceOfBirthAndNationalityAttorneyStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function PlaceOfBirthAndNationalityAttorneyStep({
+  isCheckAllDataStep,
+}: PlaceOfBirthAndNationalityAttorneyStepProps) {
   const {
     attorneyNationality,
     setAttorneyNationality,
@@ -27,6 +33,7 @@ export function PlaceOfBirthAndNationalityAttorneyStep() {
 
   return (
     <GenericStep
+      isCheckAllDataStep={isCheckAllDataStep}
       title="Qual a naturalidade e nacionalidade do procurador?"
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}

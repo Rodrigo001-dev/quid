@@ -21,6 +21,8 @@ export interface LetterOfAttorneyContextData {
   setRegistrationCalendar: Dispatch<SetStateAction<string>>;
   taxIdentificationNumber: string;
   setTaxIdentificationNumber: Dispatch<SetStateAction<string>>;
+  personIdentificationNumber: string;
+  setPersonIdentificationNumber: Dispatch<SetStateAction<string>>;
   personDocument: string | undefined;
   setPersonDocument: Dispatch<SetStateAction<string | undefined>>;
   personIssuingCountry: string | undefined;
@@ -46,6 +48,8 @@ export interface LetterOfAttorneyContextData {
   setAttorneyRegistrationCalendar: Dispatch<SetStateAction<string>>;
   attorneyTaxIdentificationNumber: string;
   setAttorneyTaxIdentificationNumber: Dispatch<SetStateAction<string>>;
+  attorneyIdentificationNumber: string;
+  setAttorneyIdentificationNumber: Dispatch<SetStateAction<string>>;
   attorneyDocument: string | undefined;
   setAttorneyDocument: Dispatch<SetStateAction<string | undefined>>;
   attorneyIssuingCountry: string | undefined;

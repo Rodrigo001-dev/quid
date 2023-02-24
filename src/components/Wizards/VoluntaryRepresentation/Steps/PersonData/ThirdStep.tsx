@@ -5,13 +5,20 @@ import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function PowersIntendsConfer() {
+interface PowersIntendsConferProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function PowersIntendsConfer({
+  isCheckAllDataStep,
+}: PowersIntendsConferProps) {
   const { powers, setPowers } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
   return (
     <GenericStep
+      isCheckAllDataStep={isCheckAllDataStep}
       title="Quais os poderes que pretende conferir?"
       firstButtonContent="Sim."
       onClickFirstButton={() => nextStep()}

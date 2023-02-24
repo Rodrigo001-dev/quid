@@ -8,7 +8,13 @@ import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function AdditionalInformationStep() {
+interface AdditionalInformationStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function AdditionalInformationStep({
+  isCheckAllDataStep,
+}: AdditionalInformationStepProps) {
   const {
     dateOfPowerOfAttorney,
     setDateOfPowerOfAttorney,
@@ -16,7 +22,9 @@ export function AdditionalInformationStep() {
     setDateOfAttorney,
     placeOfAttorney,
     setPlaceOfAttorney,
+    replaceWithSomeoneElse,
     setReplaceWithSomeoneElse,
+    concludeBusinessWithYourself,
     setConcludeBusinessWithYourself,
   } = useLetterOfAttorneyContext();
 
@@ -25,6 +33,7 @@ export function AdditionalInformationStep() {
   return (
     <GenericStep
       title="Algumas informações adicionais sobre o(s) procurador(es)"
+      isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
       instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.” <br /><br /> “A data de produção de efeitos é a data a partir da qual o procurador pode agir em nome do representado ao abrigo desta procuração.” <br /><br /> “Por favor, indique a data que pretende dar à procuração e o local em que a deverá assinar. Os documentos devem ter a data da sua assinatura.”"
@@ -43,6 +52,7 @@ export function AdditionalInformationStep() {
             ariaLabel="procurador se substituir por outra pessoa"
             firstRadioValue="Sim"
             secondRadioValue="Não"
+            value={replaceWithSomeoneElse}
             onValueChange={(value) => setReplaceWithSomeoneElse(value)}
           />
         </section>
@@ -59,6 +69,7 @@ export function AdditionalInformationStep() {
             ariaLabel="procurador celebrar negócios consigo mesmo"
             firstRadioValue="Sim"
             secondRadioValue="Não"
+            value={concludeBusinessWithYourself}
             onValueChange={(value) => setConcludeBusinessWithYourself(value)}
           />
         </section>

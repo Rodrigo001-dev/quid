@@ -9,7 +9,13 @@ import { concelhos } from "../../../../../utils/concelho";
 import { freguesias } from "../../../../../utils/freguesia";
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function PlaceOfBirthAndNationalityStep() {
+interface PlaceOfBirthAndNationalityStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function PlaceOfBirthAndNationalityStep({
+  isCheckAllDataStep,
+}: PlaceOfBirthAndNationalityStepProps) {
   const {
     personNationality,
     setPersonNationality,
@@ -26,6 +32,7 @@ export function PlaceOfBirthAndNationalityStep() {
   return (
     <GenericStep
       title="Qual a sua naturalidade e nacionalidade?"
+      isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
       instructions="“A naturalidade designa o lugar onde nasceu. A nacionalidade designa o país do qual é cidadão.”"

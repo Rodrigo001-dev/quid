@@ -3,7 +3,13 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-export function AttorneyCurrentResidenceStep() {
+interface AttorneyCurrentResidenceStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function AttorneyCurrentResidenceStep({
+  isCheckAllDataStep,
+}: AttorneyCurrentResidenceStepProps) {
   const { attorneyHabitualResidence, setAttorneyHabitualResidence } =
     useLetterOfAttorneyContext();
 
@@ -11,6 +17,7 @@ export function AttorneyCurrentResidenceStep() {
 
   return (
     <GenericStep
+      isCheckAllDataStep={isCheckAllDataStep}
       title="Por favor, indique a residência habitual do procurador."
       firstButtonContent="Sim."
       onClickFirstButton={() => nextStep()}

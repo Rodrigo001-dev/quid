@@ -5,7 +5,13 @@ import { GenericStep } from "../../../GenericStep";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function CurrentResidenceStep() {
+interface CurrentResidenceStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function CurrentResidenceStep({
+  isCheckAllDataStep,
+}: CurrentResidenceStepProps) {
   const { personHabitualResidence, setPersonHabitualResidence } =
     useLetterOfAttorneyContext();
 
@@ -14,6 +20,7 @@ export function CurrentResidenceStep() {
   return (
     <GenericStep
       title="Por favor, indique a sua residência habitual."
+      isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Sim."
       onClickFirstButton={() => nextStep()}
       instructions="“O texto que redige aqui é integrado seu documento final.”"

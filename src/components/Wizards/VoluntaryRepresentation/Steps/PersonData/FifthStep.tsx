@@ -7,15 +7,28 @@ import { InputAndLabel } from "../../../InputAndLabel";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function PersonalDataStep() {
-  const { personName, setPersonName, setPersonMaritalStatus, setPersonGender } =
-    useLetterOfAttorneyContext();
+interface PersonalDataStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function PersonalDataStep({
+  isCheckAllDataStep,
+}: PersonalDataStepProps) {
+  const {
+    personName,
+    setPersonName,
+    personMaritalStatus,
+    setPersonMaritalStatus,
+    personGender,
+    setPersonGender,
+  } = useLetterOfAttorneyContext();
 
   const { nextStep } = useWizard();
 
   return (
     <GenericStep
       title="Por favor, Introduza os seus dados pessoais"
+      isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
       instructions="“O documento pelo qual se conferem poderes representativos deve conter a identificação do representado, ou seja, de quem confere os poderes.”"
@@ -47,6 +60,7 @@ export function PersonalDataStep() {
             thirdRadioValue="Unido(a) de facto."
             fourthRadioValue="Divorciado(a)."
             fifthRadioValue="Viúvo(a)."
+            value={personMaritalStatus}
             onValueChange={(value) => setPersonMaritalStatus(value)}
           />
         </section>
@@ -64,6 +78,7 @@ export function PersonalDataStep() {
             firstRadioValue="Ele/dele"
             secondRadioValue="Ela/dela"
             thirdRadioValue="Elu/delu"
+            value={personGender}
             onValueChange={(value) => setPersonGender(value)}
           />
         </section>

@@ -33,6 +33,8 @@ export const LetterOfAttorneyContextProvider = ({
   );
   const [registrationCalendar, setRegistrationCalendar] = useState("");
   const [taxIdentificationNumber, setTaxIdentificationNumber] = useState("");
+  const [personIdentificationNumber, setPersonIdentificationNumber] =
+    useState("");
   const [personDocument, setPersonDocument] = useState<string | undefined>(
     undefined
   );
@@ -62,6 +64,8 @@ export const LetterOfAttorneyContextProvider = ({
   const [attorneyRegistrationCalendar, setAttorneyRegistrationCalendar] =
     useState("");
   const [attorneyTaxIdentificationNumber, setAttorneyTaxIdentificationNumber] =
+    useState("");
+  const [attorneyIdentificationNumber, setAttorneyIdentificationNumber] =
     useState("");
   const [attorneyDocument, setAttorneyDocument] = useState<string | undefined>(
     undefined
@@ -104,6 +108,8 @@ export const LetterOfAttorneyContextProvider = ({
         setRegistrationCalendar,
         taxIdentificationNumber,
         setTaxIdentificationNumber,
+        personIdentificationNumber,
+        setPersonIdentificationNumber,
         personDocument,
         setPersonDocument,
         personIssuingCountry,
@@ -130,6 +136,8 @@ export const LetterOfAttorneyContextProvider = ({
         setAttorneyRegistrationCalendar,
         attorneyTaxIdentificationNumber,
         setAttorneyTaxIdentificationNumber,
+        attorneyIdentificationNumber,
+        setAttorneyIdentificationNumber,
         attorneyDocument,
         setAttorneyDocument,
         attorneyIssuingCountry,

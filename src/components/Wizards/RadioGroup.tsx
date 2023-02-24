@@ -8,6 +8,7 @@ interface RadioGroupProps {
   thirdRadioValue?: string;
   fourthRadioValue?: string;
   fifthRadioValue?: string;
+  value: string | undefined;
   onValueChange: ((value: string) => void) | undefined;
 }
 
@@ -19,6 +20,7 @@ export function RadioGroup({
   thirdRadioValue,
   fourthRadioValue,
   fifthRadioValue,
+  value,
   onValueChange,
 }: RadioGroupProps) {
   return (
@@ -26,6 +28,7 @@ export function RadioGroup({
       id={radioGroupId}
       className="flex flex-col gap-2"
       aria-label={ariaLabel}
+      value={value}
       onValueChange={onValueChange}
     >
       <div className="flex items-center">

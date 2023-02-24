@@ -10,7 +10,13 @@ import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 import { countries } from "@/utils/countries";
 import { identificationDocument } from "@/utils/identificationDocument";
 
-export function CivilIdentificationStep() {
+interface CivilIdentificationStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function CivilIdentificationStep({
+  isCheckAllDataStep,
+}: CivilIdentificationStepProps) {
   const {
     registrationCalendar,
     setRegistrationCalendar,
@@ -18,6 +24,8 @@ export function CivilIdentificationStep() {
     setTaxIdentificationNumber,
     personDocument,
     setPersonDocument,
+    personIdentificationNumber,
+    setPersonIdentificationNumber,
     personIssuingCountry,
     setPersonIssuingCountry,
   } = useLetterOfAttorneyContext();
@@ -27,6 +35,7 @@ export function CivilIdentificationStep() {
   return (
     <GenericStep
       title="Por favor, introduza os seus dados de identificação civil."
+      isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
     >
@@ -43,6 +52,10 @@ export function CivilIdentificationStep() {
             className="inline-flex h-[35px] w-60 appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-text-500 shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
             type="text"
             placeholder="Número de identificação"
+            value={personIdentificationNumber}
+            onChange={(event) =>
+              setPersonIdentificationNumber(event.target.value)
+            }
           />
         </section>
 

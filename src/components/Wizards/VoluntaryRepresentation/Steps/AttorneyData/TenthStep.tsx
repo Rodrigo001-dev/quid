@@ -8,11 +8,19 @@ import { RadioGroup } from "@/components/Wizards/RadioGroup";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-export function AttorneyPersonalDataStep() {
+interface AttorneyPersonalDataStepProps {
+  isCheckAllDataStep?: boolean;
+}
+
+export function AttorneyPersonalDataStep({
+  isCheckAllDataStep,
+}: AttorneyPersonalDataStepProps) {
   const {
     attorneyName,
     setAttorneyName,
+    attorneyMaritalStatus,
     setAttorneyMaritalStatus,
+    attorneyGender,
     setAttorneyGender,
   } = useLetterOfAttorneyContext();
 
@@ -20,6 +28,7 @@ export function AttorneyPersonalDataStep() {
 
   return (
     <GenericStep
+      isCheckAllDataStep={isCheckAllDataStep}
       title="Por favor, Introduza os dados pessoais do procurador"
       firstButtonContent="Continuar."
       onClickFirstButton={() => nextStep()}
@@ -52,6 +61,7 @@ export function AttorneyPersonalDataStep() {
             thirdRadioValue="Unido(a) de facto."
             fourthRadioValue="Divorciado(a)."
             fifthRadioValue="Viúvo(a)."
+            value={attorneyMaritalStatus}
             onValueChange={(value) => setAttorneyMaritalStatus(value)}
           />
         </section>
@@ -69,6 +79,7 @@ export function AttorneyPersonalDataStep() {
             firstRadioValue="Ele/dele"
             secondRadioValue="Ela/dela"
             thirdRadioValue="Elu/delu"
+            value={attorneyGender}
             onValueChange={(value) => setAttorneyGender(value)}
           />
         </section>
