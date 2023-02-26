@@ -31,7 +31,7 @@ export function CurrentResidenceStep({
         id="habitualResidence"
         cols={59}
         rows={4}
-        autoFocus
+        autoFocus={!isCheckAllDataStep ? true : false}
         value={personHabitualResidence}
         onChange={(event) => setPersonHabitualResidence(event.target.value)}
       />

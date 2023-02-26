@@ -1,4 +1,12 @@
 import { createContext, ReactNode, useState } from "react";
+import {
+  PDFDownloadLink,
+  Page,
+  Text,
+  View,
+  Document,
+} from "@react-pdf/renderer";
+
 import { LetterOfAttorneyContextData } from "./interfaces";
 
 type LetterOfAttorneyContextProps = {
@@ -84,6 +92,29 @@ export const LetterOfAttorneyContextProvider = ({
   const [concludeBusinessWithYourself, setConcludeBusinessWithYourself] =
     useState<string | undefined>(undefined);
 
+  function generatePDF() {
+    return (
+      <PDFDownloadLink
+        document={
+          <Document>
+            <Page>
+              <View>
+                <Text>Nome: {personName}</Text>
+                <Text>dados: {personMaritalStatus}</Text>
+                <Text>Endereço: {personHabitualResidence}</Text>
+              </View>
+            </Page>
+          </Document>
+        }
+        fileName="procuração.pdf"
+      >
+        {({ blob, url, loading, error }) =>
+          loading ? "Gerando PDF..." : "Download do PDF"
+        }
+      </PDFDownloadLink>
+    );
+  }
+
   return (
     <LetterOfAttorneyContext.Provider
       value={{
@@ -154,6 +185,7 @@ export const LetterOfAttorneyContextProvider = ({
         setReplaceWithSomeoneElse,
         concludeBusinessWithYourself,
         setConcludeBusinessWithYourself,
+        generatePDF,
       }}
     >
       {children}

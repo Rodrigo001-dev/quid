@@ -1,4 +1,4 @@
-import { useWizard } from "react-use-wizard";
+import { useRouter } from "next/router";
 
 import { GenericStep } from "../../../GenericStep";
 
@@ -7,15 +7,20 @@ import { PlaceOfBirthAndNationalityAttorneyStep } from "./EleventhStep";
 import { AttorneyCivilIdentificationStep } from "./TwelfthStep";
 import { AttorneyCurrentResidenceStep } from "./ThirteenthStep";
 import { AdditionalInformationStep } from "./FifteenthStep";
+import { useEffect } from "react";
 
 export function CheckAllAttorneyData() {
-  const { nextStep } = useWizard();
+  const router = useRouter();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep
       title="Verifique se os dados do(s) procurador(es) estão corretos"
       firstButtonContent="Ir para o pagamento"
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => router.push("/payment")}
     >
       <section className="flex flex-col justify-center items-center">
         <AttorneyPersonalDataStep isCheckAllDataStep />

@@ -30,7 +30,7 @@ export function PowersIntendsConfer({
         placeholder="Digite os poderes"
         cols={59}
         rows={4}
-        autoFocus
+        autoFocus={!isCheckAllDataStep ? true : false}
         value={powers}
         onChange={(event) => setPowers(event.target.value)}
       />

@@ -29,7 +29,7 @@ export function AttorneyCurrentResidenceStep({
         id="habitualResidence"
         cols={59}
         rows={4}
-        autoFocus
+        autoFocus={!isCheckAllDataStep ? true : false}
         value={attorneyHabitualResidence}
         onChange={(event) => setAttorneyHabitualResidence(event.target.value)}
       />
