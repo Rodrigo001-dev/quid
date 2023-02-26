@@ -66,5 +66,5 @@ export interface LetterOfAttorneyContextData {
   setReplaceWithSomeoneElse: Dispatch<SetStateAction<string | undefined>>;
   concludeBusinessWithYourself: string | undefined;
   setConcludeBusinessWithYourself: Dispatch<SetStateAction<string | undefined>>;
-  generatePDF(): JSX.Element;
+  makePayment(email: string): Promise<void>;
 }

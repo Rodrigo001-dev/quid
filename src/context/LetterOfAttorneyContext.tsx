@@ -1,11 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
-import {
-  PDFDownloadLink,
-  Page,
-  Text,
-  View,
-  Document,
-} from "@react-pdf/renderer";
+import { jsPDF } from "jspdf";
+
+import { api } from "@/services/api";
 
 import { LetterOfAttorneyContextData } from "./interfaces";
 
@@ -93,26 +89,34 @@ export const LetterOfAttorneyContextProvider = ({
     useState<string | undefined>(undefined);
 
   function generatePDF() {
-    return (
-      <PDFDownloadLink
-        document={
-          <Document>
-            <Page>
-              <View>
-                <Text>Nome: {personName}</Text>
-                <Text>dados: {personMaritalStatus}</Text>
-                <Text>Endereço: {personHabitualResidence}</Text>
-              </View>
-            </Page>
-          </Document>
-        }
-        fileName="procuração.pdf"
-      >
-        {({ blob, url, loading, error }) =>
-          loading ? "Gerando PDF..." : "Download do PDF"
-        }
-      </PDFDownloadLink>
+    const doc = new jsPDF();
+    const lines = doc.splitTextToSize(
+      `Eu ${personName} declaro que li tudo o que está escrito aqui, minha residencia está localizada no ${personHabitualResidence}`,
+      190
     );
+    doc.text(lines, 10, 10);
+    return doc.output("arraybuffer");
+  }
+
+  async function makePayment(email: string) {
+    try {
+      const pdfBytes = generatePDF();
+      // const pdfBase64 = btoa(
+      //   String.fromCharCode.apply(null, Array.from(new Uint8Array(pdfBytes)))
+      // );
+
+      const pdfBase64 = Buffer.from(pdfBytes).toString("base64");
+
+      await api.post("api/payment", {
+        email,
+        content: pdfBase64,
+      });
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: LetterOfAttorneyContext.tsx:131 ~ createPayment ~ error:",
+        error
+      );
+    }
   }
 
   return (
@@ -185,7 +189,7 @@ export const LetterOfAttorneyContextProvider = ({
         setReplaceWithSomeoneElse,
         concludeBusinessWithYourself,
         setConcludeBusinessWithYourself,
-        generatePDF,
+        makePayment,
       }}
     >
       {children}

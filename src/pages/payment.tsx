@@ -1,16 +1,29 @@
+import { FormEvent, useState } from "react";
 import Image from "next/image";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as RadixRadioGroup from "@radix-ui/react-radio-group";
 import * as Checkbox from "@radix-ui/react-checkbox";
 
+import { useLetterOfAttorneyContext } from "../hooks/useLetterOfAttorneyContext";
+
 export default function Payment() {
+  const [email, setEmail] = useState("");
+
+  const { makePayment } = useLetterOfAttorneyContext();
+
+  async function handleSubmitPayment(event: FormEvent) {
+    event.preventDefault();
+
+    await makePayment(email);
+  }
+
   return (
     <main className="max-w-6xl m-auto mt-28">
       <h1 className="flex items-center justify-center text-3xl font-bold text-primary-500 mb-4">
         Estamos quase a finalizar...
       </h1>
-      <form role="form" className="flex">
+      <form role="form" onSubmit={handleSubmitPayment} className="flex">
         <div className="flex flex-col max-w-xl mx-32 gap-14 mb-11">
           <section className="w-full border border-primary-200 rounded-lg">
             <div className="pt-12 pl-12">
@@ -28,6 +41,8 @@ export default function Payment() {
                   className="w-[480px] py-3 px-5 rounded-lg border shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
                   type="email"
                   placeholder="Insira o seu email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   required
                 />
 
