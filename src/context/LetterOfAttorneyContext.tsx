@@ -98,17 +98,19 @@ export const LetterOfAttorneyContextProvider = ({
     return doc.output("arraybuffer");
   }
 
-  async function makePayment(email: string) {
+  async function makePayment(
+    email: string,
+    alias: string,
+    customerName: string
+  ) {
     try {
       const pdfBytes = generatePDF();
-      // const pdfBase64 = btoa(
-      //   String.fromCharCode.apply(null, Array.from(new Uint8Array(pdfBytes)))
-      // );
-
       const pdfBase64 = Buffer.from(pdfBytes).toString("base64");
 
       await api.post("api/payment", {
         email,
+        alias,
+        customerName,
         content: pdfBase64,
       });
     } catch (error) {

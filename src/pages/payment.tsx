@@ -9,13 +9,15 @@ import { useLetterOfAttorneyContext } from "../hooks/useLetterOfAttorneyContext"
 
 export default function Payment() {
   const [email, setEmail] = useState("");
+  const [alias, setAlias] = useState("");
+  const [customerName, setCustomerName] = useState("");
 
   const { makePayment } = useLetterOfAttorneyContext();
 
   async function handleSubmitPayment(event: FormEvent) {
     event.preventDefault();
 
-    await makePayment(email);
+    await makePayment(email, alias, customerName);
   }
 
   return (
@@ -35,6 +37,8 @@ export default function Payment() {
                   className="w-[480px] py-3 px-5 rounded-lg border shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
                   type="text"
                   placeholder="Insira o seu nome"
+                  value={customerName}
+                  onChange={(event) => setCustomerName(event.target.value)}
                   required
                 />
                 <input
@@ -154,6 +158,8 @@ export default function Payment() {
                           onWheel={(event) => event.preventDefault()}
                           className="w-60 py-2 px-3 focus:outline-none pl-24 bg-gray-100 rounded-lg border shadow-[0_0_0_2px] shadow-primary-500 outline-none focus:shadow-[0_0_0_2px_black]"
                           placeholder="962154568"
+                          value={alias}
+                          onChange={(event) => setAlias(event.target.value)}
                         />
                         <span className="flex items-center absolute left-2 top-2 bottom-2 text-black">
                           PT +351

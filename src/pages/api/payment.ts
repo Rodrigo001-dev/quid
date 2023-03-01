@@ -1,45 +1,90 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import nodemailer from "nodemailer";
+import axios from "axios";
+
+import { prisma } from "../../services/prisma";
 
 export default async function paymentHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    auth: {
-      user: "email",
-      pass: "password",
-    },
-  });
-
   const { method, body } = req;
 
   if (method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
-  console.log("🚀 ~ file: payment.ts:24 ~ body:", body);
 
-  if (!body || !body.email || !body.content) {
+  if (
+    !body ||
+    !body.email ||
+    !body.content ||
+    !body.customerName ||
+    !body.alias
+  ) {
     return res.status(400).json({ message: "Invalid request body" });
   }
 
-  const mailOptions = {
-    from: "rodrigorael53@gmail.com",
-    to: body.email,
-    subject: "Procuração",
-    attachments: [
-      {
-        filename: "procuracao.pdf",
-        content: body.content,
-        encoding: "base64",
-        contentType: "application/pdf",
+  let customer = await prisma.customer.findUnique({
+    where: { email: body.email },
+  });
+
+  if (!customer) {
+    customer = await prisma.customer.create({
+      data: {
+        name: body.customerName,
+        email: body.email,
+        alias: String(body.alias),
+        pdf: Buffer.from(body.content),
       },
-    ],
+    });
+  }
+
+  if (!customer.pdf) {
+    customer = await prisma.customer.update({
+      where: { id: customer.id },
+      data: {
+        pdf: Buffer.from(body.content),
+      },
+    });
+  }
+
+  const paymentAlreadyExist = await prisma.payment.findFirst({
+    where: {
+      customer_id: customer?.id,
+      excluded_at: null,
+      payment_status: "pendente",
+    },
+  });
+
+  if (paymentAlreadyExist) {
+    return res
+      .status(409)
+      .json({ message: "customer already has a pending payment" });
+  }
+
+  const options = {
+    method: "POST",
+    url: "https://sandbox.eupago.pt/clientes/rest_api/mbway/create",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    data: {
+      id: customer.id,
+      chave: "demo-3484-7044-e80a-50d",
+      valor: 9.95,
+      alias: body.alias,
+      descricao: `pagamento referente a procuração, nome do cliente: ${body.customerName}`,
+    },
   };
 
-  await transporter.sendMail(mailOptions);
+  await axios.request(options).then(async () => {
+    if (customer?.id) {
+      await prisma.payment.create({ data: { customer_id: customer.id } });
+    } else {
+      return res.status(400).json({ message: "invalid client id" });
+    }
+  });
 
-  res.status(200).json({ message: "Payment confirmed and PDF sent" });
+  res.status(200).json({ message: "Payment sended" });
 }
