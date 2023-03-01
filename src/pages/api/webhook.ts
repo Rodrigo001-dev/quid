@@ -60,7 +60,9 @@ export default async function handler(
     ],
   };
 
-  await transporter.sendMail(mailOptions);
+  await transporter.sendMail(mailOptions).catch(() => {
+    return res.status(500).json({ message: "Error sending email" });
+  });
 
   await prisma.payment.update({
     where: { id: paymentConfirmed.id },
