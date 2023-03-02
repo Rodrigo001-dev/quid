@@ -42,34 +42,36 @@ export default async function handler(
     where: { id: paymentConfirmed.customer_id },
   });
 
-  const mailOptions = {
-    from: process.env.EMAIL,
-    to: customer?.email,
-    subject: "Procuração",
-    attachments: [
-      {
-        filename: "procuração.pdf",
-        content: customer?.pdf?.toString("base64"),
-        encoding: "base64",
-        contentType: "application/pdf",
-      },
-    ],
-  };
+  if (customer?.pdf) {
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: customer?.email,
+      subject: "Procuração",
+      attachments: [
+        {
+          filename: "procuração.pdf",
+          content: customer.pdf,
+          encoding: "base64",
+          contentType: "application/pdf",
+        },
+      ],
+    };
 
-  await transporter.sendMail(mailOptions).catch(() => {
-    return res.status(500).json({ message: "Error sending email" });
-  });
+    await transporter.sendMail(mailOptions).catch(() => {
+      return res.status(500).json({ message: "Error sending email" });
+    });
 
-  await prisma.payment.update({
-    where: { id: paymentConfirmed.id },
-    data: {
-      payment_status: "paga",
-      excluded_at: new Date(),
-      customer: {
-        update: { pdf: null },
+    await prisma.payment.update({
+      where: { id: paymentConfirmed.id },
+      data: {
+        payment_status: "paga",
+        excluded_at: new Date(),
+        customer: {
+          update: { pdf: null },
+        },
       },
-    },
-  });
+    });
+  }
 
   return res.status(200).json({ message: "Email sended" });
 }

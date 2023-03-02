@@ -22,7 +22,7 @@ model Customer {
   name  String
   email String  @unique
   alias String? @unique
-  pdf   Bytes?
+  pdf   String?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

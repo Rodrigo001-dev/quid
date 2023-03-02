@@ -33,7 +33,7 @@ export default async function paymentHandler(
         name: body.customerName,
         email: body.email,
         alias: String(body.alias),
-        pdf: Buffer.from(body.content),
+        pdf: body.content,
       },
     });
   }
@@ -42,7 +42,7 @@ export default async function paymentHandler(
     customer = await prisma.customer.update({
       where: { id: customer.id },
       data: {
-        pdf: Buffer.from(body.content),
+        pdf: body.content,
       },
     });
   }
