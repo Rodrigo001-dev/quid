@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { method, body } = req;
 
-  if (method !== "POST") {
+  if (method !== "GET") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
