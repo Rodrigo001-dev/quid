@@ -23,33 +23,20 @@ export default async function paymentHandler(
     return res.status(400).json({ message: "Invalid request body" });
   }
 
-  let customer = await prisma.customer.findUnique({
+  const customer = await prisma.customer.upsert({
     where: { email: body.email },
+    update: { pdf: body.content },
+    create: {
+      name: body.customerName,
+      email: body.email,
+      alias: String(body.alias),
+      pdf: body.content,
+    },
   });
-
-  if (!customer) {
-    customer = await prisma.customer.create({
-      data: {
-        name: body.customerName,
-        email: body.email,
-        alias: String(body.alias),
-        pdf: body.content,
-      },
-    });
-  }
-
-  if (!customer.pdf) {
-    customer = await prisma.customer.update({
-      where: { id: customer.id },
-      data: {
-        pdf: body.content,
-      },
-    });
-  }
 
   const paymentAlreadyExist = await prisma.payment.findFirst({
     where: {
-      customer_id: customer?.id,
+      customer_id: customer.id,
       excluded_at: null,
       payment_status: "pendente",
     },
