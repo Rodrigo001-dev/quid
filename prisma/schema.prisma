@@ -27,7 +27,7 @@ model Customer {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  payments Payment?
+  payments Payment[]
 
   @@map("customers")
 }
@@ -41,8 +41,9 @@ model Payment {
   updated_at  DateTime  @updatedAt
   excluded_at DateTime?
 
-  customer_id String   @unique
+  customer_id String
   customer    Customer @relation(fields: [customer_id], references: [id])
 
+  @@index([customer_id], name: "customer_id")
   @@map("payments")
 }
