@@ -22,11 +22,7 @@ export default async function handler(
     },
   });
 
-  const { identificador, chave_api } = body;
-
-  if (chave_api !== "demo-3484-7044-e80a-50d") {
-    return res.status(401).json({ message: "Invalid key" });
-  }
+  const { identificador } = body;
 
   const paymentConfirmed = await prisma.payment.findFirst({
     where: {
