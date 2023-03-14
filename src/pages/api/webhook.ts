@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import nodemailer from "nodemailer";
 
 import { prisma } from "../../services/prisma";
+import { transporter } from "../../services/transporter";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,15 +12,6 @@ export default async function handler(
   if (method !== "GET") {
     return res.status(405).json({ message: "Method not allowed" });
   }
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
-    },
-  });
 
   const { identificador } = body;
 
