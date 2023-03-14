@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
-import { GenericStep } from "@/components/Wizards/GenericStep";
-import { Select } from "@/components/Wizards/Select";
-import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
+import { GenericStep } from "@/components/wizards/GenericStep";
+import { Select } from "@/components/wizards/Select";
+import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 
 import { identificationDocument } from "@/utils/identificationDocument";
 import { countries } from "@/utils/countries";

@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import { Header } from "@/components/header";
-import { ButtonRedirectToLetterOfAttorney } from "@/components/ButtonRedirectToLetterOfAttorney";
+import { Header } from "@/components/shared/Header";
+import { ButtonRedirectToLetterOfAttorney } from "@/components/shared/ButtonRedirectToLetterOfAttorney";
 
 export default function Home() {
   return (

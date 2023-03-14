@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { ButtonRedirectToLetterOfAttorney } from "./ButtonRedirectToLetterOfAttorney";
 
-import Logo from "../../public/assets/logo.svg";
+import Logo from "../../../public/assets/logo.svg";
 
 interface HeaderProps {
   isHomePage: boolean;

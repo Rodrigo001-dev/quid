@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 import { GenericStep } from "../../../GenericStep";
+// import { Toast } from "@/components/shared/Toast";
 
 interface PowersIntendsConferProps {
   isCheckAllDataStep?: boolean;
@@ -16,12 +16,19 @@ export function PowersIntendsConfer({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (powers.trim() === "") {
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
       title="Quais os poderes que pretende conferir?"
       firstButtonContent="Sim."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="Certifique-se de que concretiza com suficiência os poderes (o “o quê?”) e o fim da atribuição de poderes (o “para quê?”). <br/><br/> Caso pretenda conferir poderes para doar um bem, certifique-se de que concretiza com suficiência o bem e a pessoa a quem o bem será doado. Ao procurador não será permitido designar a quem é feita doação ou determinar o que é doado <br/><br/> “[…] conferindo-lhe os poderes necessários para, em nome e por conta da/o Mandante”"
     >
       <textarea

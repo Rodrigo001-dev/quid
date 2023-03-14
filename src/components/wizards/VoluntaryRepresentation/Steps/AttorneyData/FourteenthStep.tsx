@@ -2,7 +2,7 @@ import { useWizard } from "react-use-wizard";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
-import { GenericStep } from "@/components/Wizards/GenericStep";
+import { GenericStep } from "@/components/wizards/GenericStep";
 
 export function AddMoreAttorneyStep() {
   const {

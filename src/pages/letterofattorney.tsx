@@ -1,5 +1,5 @@
-import { Header } from "@/components/header";
-import { VoluntaryRepresentation } from "../components/Wizards/VoluntaryRepresentation";
+import { Header } from "@/components/shared/Header";
+import { VoluntaryRepresentation } from "../components/wizards/VoluntaryRepresentation";
 
 export default function LetterOfAttorney() {
   return (

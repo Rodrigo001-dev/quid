@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
-import { GenericStep } from "@/components/Wizards/GenericStep";
-import { InputAndLabel } from "@/components/Wizards/InputAndLabel";
-import { RadioGroup } from "@/components/Wizards/RadioGroup";
+import { GenericStep } from "@/components/wizards/GenericStep";
+import { InputAndLabel } from "@/components/wizards/InputAndLabel";
+import { RadioGroup } from "@/components/wizards/RadioGroup";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 

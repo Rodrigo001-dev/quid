@@ -1,7 +1,7 @@
 import { useWizard } from "react-use-wizard";
 import { useRouter } from "next/router";
 
-import { GenericStep } from "@/components/Wizards/GenericStep";
+import { GenericStep } from "@/components/wizards/GenericStep";
 
 export function ApplyForPowerOfAttorneyStep() {
   const { nextStep } = useWizard();

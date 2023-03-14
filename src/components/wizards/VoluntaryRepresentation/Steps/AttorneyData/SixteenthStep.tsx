@@ -1,6 +1,6 @@
 import { useWizard } from "react-use-wizard";
 
-import { GenericStep } from "@/components/Wizards/GenericStep";
+import { GenericStep } from "@/components/wizards/GenericStep";
 
 export function DeadlinePowerOfAttorneyStep() {
   const { nextStep } = useWizard();

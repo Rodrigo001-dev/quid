@@ -1,5 +1,5 @@
-import { Header } from "@/components/header";
-import { FunctionOfThePowerOfAttorney } from "@/components/Wizards/FunctionOfThePowerOfAttorney";
+import { Header } from "@/components/shared/Header";
+import { FunctionOfThePowerOfAttorney } from "@/components/wizards/FunctionOfThePowerOfAttorney";
 
 export default function FunctionPowerOfAttorney() {
   return (
