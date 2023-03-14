@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { prisma } from "../../services/prisma";
-import { transporter } from "../../services/transporter";
+import { prisma } from "@/services/prisma";
+import { transporter } from "@/services/transporter";
 
 export default async function handler(
   req: NextApiRequest,

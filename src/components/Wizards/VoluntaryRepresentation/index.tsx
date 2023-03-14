@@ -39,12 +39,12 @@ export function VoluntaryRepresentation() {
       <PlaceOfBirthAndNationalityAttorneyStep />
       <AttorneyCivilIdentificationStep />
       <AttorneyCurrentResidenceStep />
+      <CheckAllAttorneyData />
       <AddMoreAttorneyStep />
       <AdditionalInformationStep />
       <DeadlinePowerOfAttorneyStep />
 
       <CheckAllPersonData />
-      <CheckAllAttorneyData />
     </Wizard>
   );
 }

@@ -1,4 +1,5 @@
-import { useWizard } from "react-use-wizard";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { GenericStep } from "../../../GenericStep";
 import { PowersIntendsConfer } from "./ThirdStep";
@@ -8,13 +9,17 @@ import { CivilIdentificationStep } from "./SeventhStep";
 import { CurrentResidenceStep } from "./EighthStep";
 
 export function CheckAllPersonData() {
-  const { nextStep } = useWizard();
+  const router = useRouter();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep
       title="Verifique se os seus dados estão corretos"
-      firstButtonContent="Avançar"
-      onClickFirstButton={() => nextStep()}
+      firstButtonContent="Ir para o pagamento"
+      onClickFirstButton={() => router.push("/payment")}
     >
       <section className="flex flex-col justify-center items-center">
         <PowersIntendsConfer isCheckAllDataStep />

@@ -71,7 +71,7 @@ export function AttorneyPersonalDataStep({
             className="text-base font-semibold leading-[35px] text-text-500"
             htmlFor="gender"
           >
-            Como o procurador prefere ser tratado?
+            Como ele prefere ser tratado?
           </Label.Root>
           <RadioGroup
             radioGroupId="gender"

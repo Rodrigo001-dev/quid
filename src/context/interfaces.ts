@@ -66,12 +66,30 @@ export interface LetterOfAttorneyContextData {
   setReplaceWithSomeoneElse: Dispatch<SetStateAction<string | undefined>>;
   concludeBusinessWithYourself: string | undefined;
   setConcludeBusinessWithYourself: Dispatch<SetStateAction<string | undefined>>;
+  attorneys: AttorneyData[];
+  setAttorneys: Dispatch<SetStateAction<AttorneyData[]>>;
   makePayment({
     paymentMethod,
     email,
     alias,
     customerName,
   }: makePaymentParams): Promise<void>;
+}
+
+export interface AttorneyData {
+  attorneyName: string;
+  attorneyMaritalStatus: string | undefined;
+  attorneyGender: string | undefined;
+  attorneyNationality: string;
+  attorneyCountry: string | undefined;
+  attorneyConcelho: string | undefined;
+  attorneyFreguesia: string | undefined;
+  attorneyRegistrationCalendar: string;
+  attorneyTaxIdentificationNumber: string;
+  attorneyIdentificationNumber: string;
+  attorneyDocument: string | undefined;
+  attorneyIssuingCountry: string | undefined;
+  attorneyHabitualResidence: string;
 }
 
 export interface makePaymentParams {

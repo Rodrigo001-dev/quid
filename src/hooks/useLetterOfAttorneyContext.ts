@@ -67,6 +67,8 @@ export function useLetterOfAttorneyContext() {
     setReplaceWithSomeoneElse,
     concludeBusinessWithYourself,
     setConcludeBusinessWithYourself,
+    attorneys,
+    setAttorneys,
     makePayment,
   } = useContext(LetterOfAttorneyContext);
 
@@ -135,6 +137,8 @@ export function useLetterOfAttorneyContext() {
     setReplaceWithSomeoneElse,
     concludeBusinessWithYourself,
     setConcludeBusinessWithYourself,
+    attorneys,
+    setAttorneys,
     makePayment,
   };
 }

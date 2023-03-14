@@ -3,7 +3,11 @@ import { jsPDF } from "jspdf";
 
 import { api } from "@/services/api";
 
-import { LetterOfAttorneyContextData, makePaymentParams } from "./interfaces";
+import {
+  AttorneyData,
+  LetterOfAttorneyContextData,
+  makePaymentParams,
+} from "./interfaces";
 
 type LetterOfAttorneyContextProps = {
   children: ReactNode;
@@ -79,6 +83,8 @@ export const LetterOfAttorneyContextProvider = ({
   >(undefined);
   const [attorneyHabitualResidence, setAttorneyHabitualResidence] =
     useState("");
+  const [attorneys, setAttorneys] = useState<AttorneyData[]>([]);
+
   const [dateOfPowerOfAttorney, setDateOfPowerOfAttorney] = useState("");
   const [dateOfAttorney, setDateOfAttorney] = useState("");
   const [placeOfAttorney, setPlaceOfAttorney] = useState("");
@@ -193,6 +199,8 @@ export const LetterOfAttorneyContextProvider = ({
         setReplaceWithSomeoneElse,
         concludeBusinessWithYourself,
         setConcludeBusinessWithYourself,
+        attorneys,
+        setAttorneys,
         makePayment,
       }}
     >
