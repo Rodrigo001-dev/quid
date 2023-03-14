@@ -3,7 +3,7 @@ import { jsPDF } from "jspdf";
 
 import { api } from "@/services/api";
 
-import { LetterOfAttorneyContextData } from "./interfaces";
+import { LetterOfAttorneyContextData, makePaymentParams } from "./interfaces";
 
 type LetterOfAttorneyContextProps = {
   children: ReactNode;
@@ -98,16 +98,18 @@ export const LetterOfAttorneyContextProvider = ({
     return doc.output("arraybuffer");
   }
 
-  async function makePayment(
-    email: string,
-    alias: string,
-    customerName: string
-  ) {
+  async function makePayment({
+    paymentMethod,
+    email,
+    alias,
+    customerName,
+  }: makePaymentParams) {
     try {
       const pdfBytes = generatePDF();
       const pdfBase64 = Buffer.from(pdfBytes).toString("base64");
 
       await api.post("api/payment", {
+        paymentMethod,
         email,
         alias,
         customerName,

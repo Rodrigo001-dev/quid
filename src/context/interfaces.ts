@@ -66,9 +66,17 @@ export interface LetterOfAttorneyContextData {
   setReplaceWithSomeoneElse: Dispatch<SetStateAction<string | undefined>>;
   concludeBusinessWithYourself: string | undefined;
   setConcludeBusinessWithYourself: Dispatch<SetStateAction<string | undefined>>;
-  makePayment(
-    email: string,
-    alias: string,
-    customerName: string
-  ): Promise<void>;
+  makePayment({
+    paymentMethod,
+    email,
+    alias,
+    customerName,
+  }: makePaymentParams): Promise<void>;
+}
+
+export interface makePaymentParams {
+  paymentMethod?: string;
+  email: string;
+  alias: string;
+  customerName: string;
 }

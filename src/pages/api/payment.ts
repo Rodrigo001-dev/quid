@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
 
 import { prisma } from "../../services/prisma";
+import { eupago } from "../../services/eupago";
 
 export default async function paymentHandler(
   req: NextApiRequest,
@@ -18,7 +18,8 @@ export default async function paymentHandler(
     !body.email ||
     !body.content ||
     !body.customerName ||
-    !body.alias
+    !body.alias ||
+    !body.paymentMethod
   ) {
     return res.status(400).json({ message: "Invalid request body" });
   }
@@ -48,30 +49,47 @@ export default async function paymentHandler(
       .json({ message: "customer already has a pending payment" });
   }
 
-  const options = {
-    method: "POST",
-    url: "https://sandbox.eupago.pt/clientes/rest_api/mbway/create",
-    headers: {
-      accept: "application/json",
-      "content-type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-    data: {
+  let isEupagoReturnSuccessStatusCode = false;
+
+  console.log(
+    "🚀 ~ file: payment.ts:55 ~ body.paymentMethod:",
+    body.paymentMethod
+  );
+  if (body.paymentMethod === "MB Way") {
+    const { status } = await eupago.post("/mbway/create", {
       id: customer.id,
       chave: "demo-3484-7044-e80a-50d",
       valor: 9.95,
       alias: body.alias,
       descricao: `pagamento referente a procuração, nome do cliente: ${body.customerName}`,
-    },
-  };
+    });
 
-  await axios.request(options).then(async () => {
-    if (customer?.id) {
-      await prisma.payment.create({ data: { customer_id: customer.id } });
-    } else {
-      return res.status(400).json({ message: "invalid client id" });
+    if (status === 200) {
+      isEupagoReturnSuccessStatusCode = true;
     }
-  });
+  }
+
+  if (body.paymentMethod === "Multibanco") {
+    const { status } = await eupago.post("/multibanco/create", {
+      id: customer.id,
+      chave: "demo-3484-7044-e80a-50d",
+      valor: 9.95,
+      per_dup: 1,
+    });
+
+    if (status === 200) {
+      isEupagoReturnSuccessStatusCode = true;
+    }
+  }
+
+  if (!customer?.id || !isEupagoReturnSuccessStatusCode) {
+    return res.status(400).json({
+      message:
+        "invalid client id or eupago API did not return success status code",
+    });
+  }
+
+  await prisma.payment.create({ data: { customer_id: customer.id } });
 
   res.status(200).json({ message: "Payment sended" });
 }

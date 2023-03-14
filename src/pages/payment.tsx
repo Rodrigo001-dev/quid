@@ -11,13 +11,20 @@ export default function Payment() {
   const [email, setEmail] = useState("");
   const [alias, setAlias] = useState("");
   const [customerName, setCustomerName] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<string | undefined>(
+    undefined
+  );
+  console.log(
+    "🚀 ~ file: payment.tsx:15 ~ Payment ~ paymentMethod:",
+    paymentMethod
+  );
 
   const { makePayment } = useLetterOfAttorneyContext();
 
   async function handleSubmitPayment(event: FormEvent) {
     event.preventDefault();
 
-    await makePayment(email, alias, customerName);
+    await makePayment({ paymentMethod, email, alias, customerName });
   }
 
   return (
@@ -121,8 +128,8 @@ export default function Payment() {
                   className="flex flex-col gap-2"
                   aria-label="Método de pagamento: MB Way ou Multibanco"
                   required
-                  // value={}
-                  // onValueChange={}
+                  value={paymentMethod}
+                  onValueChange={(value) => setPaymentMethod(value)}
                 >
                   <div className="flex items-center flex-col">
                     <div className="flex items-center mr-auto">
