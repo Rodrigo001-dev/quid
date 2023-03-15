@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { prisma } from "../../services/prisma";
-import { eupago } from "../../services/eupago";
+import { prisma } from "@/services/prisma";
+import { eupago } from "@/services/eupago";
+
+import { errorMessages } from "@/utils/errors/errorMessages";
 
 export default async function paymentHandler(
   req: NextApiRequest,
@@ -10,7 +12,7 @@ export default async function paymentHandler(
   const { method, body } = req;
 
   if (method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
+    return res.status(405).json({ message: errorMessages.methodNotAllowed });
   }
 
   if (
@@ -21,7 +23,7 @@ export default async function paymentHandler(
     !body.alias ||
     !body.paymentMethod
   ) {
-    return res.status(400).json({ message: "Invalid request body" });
+    return res.status(400).json({ message: errorMessages.invalidBody });
   }
 
   const customer = await prisma.customer.upsert({
@@ -44,9 +46,7 @@ export default async function paymentHandler(
   });
 
   if (paymentAlreadyExist) {
-    return res
-      .status(409)
-      .json({ message: "customer already has a pending payment" });
+    return res.status(409).json({ message: errorMessages.pendingPayment });
   }
 
   let isEupagoReturnSuccessStatusCode = false;
@@ -84,8 +84,7 @@ export default async function paymentHandler(
 
   if (!customer?.id || !isEupagoReturnSuccessStatusCode) {
     return res.status(400).json({
-      message:
-        "invalid client id or eupago API did not return success status code",
+      message: errorMessages.errorClientIdOrEupagoAPI,
     });
   }
 

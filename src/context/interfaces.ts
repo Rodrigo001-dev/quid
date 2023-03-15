@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import { AxiosResponse } from "axios";
+import { Id } from "react-toastify";
 
 export interface LetterOfAttorneyContextData {
   powers: string;
@@ -73,7 +75,7 @@ export interface LetterOfAttorneyContextData {
     email,
     alias,
     customerName,
-  }: makePaymentParams): Promise<void>;
+  }: makePaymentParams): Promise<AxiosResponse<any, any> | Id>;
 }
 
 export interface AttorneyData {

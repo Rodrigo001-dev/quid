@@ -4,6 +4,7 @@ import * as Label from "@radix-ui/react-label";
 import { GenericStep } from "@/components/wizards/GenericStep";
 import { RadioGroup } from "@/components/wizards/RadioGroup";
 import { InputAndLabel } from "@/components/wizards/InputAndLabel";
+import { Toast } from "@/components/shared/Toast";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -29,12 +30,28 @@ export function AdditionalInformationStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      dateOfPowerOfAttorney.trim() === "" ||
+      dateOfAttorney.trim() === "" ||
+      placeOfAttorney.trim() === "" ||
+      !replaceWithSomeoneElse ||
+      !concludeBusinessWithYourself
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       title="Algumas informações adicionais sobre o(s) procurador(es)"
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.” <br /><br /> “A data de produção de efeitos é a data a partir da qual o procurador pode agir em nome do representado ao abrigo desta procuração.” <br /><br /> “Por favor, indique a data que pretende dar à procuração e o local em que a deverá assinar. Os documentos devem ter a data da sua assinatura.”"
       legalBase="Art. 264.º, n.º 1 do CC <br />Art. 261.º, n.º 1 do CC"
     >

@@ -1,7 +1,11 @@
 import { createContext, ReactNode, useState } from "react";
 import { jsPDF } from "jspdf";
 
+import { Toast } from "@/components/shared/Toast";
+
 import { api } from "@/services/api";
+
+import { errorMessages } from "@/utils/errors/errorMessages";
 
 import {
   AttorneyData,
@@ -122,10 +126,87 @@ export const LetterOfAttorneyContextProvider = ({
         content: pdfBase64,
       });
     } catch (error) {
-      console.log(
-        "🚀 ~ file: LetterOfAttorneyContext.tsx:131 ~ createPayment ~ error:",
-        error
-      );
+      switch (error.response.status) {
+        case 405:
+          if (error.response.data.message === errorMessages.methodNotAllowed) {
+            return Toast({
+              message:
+                "Ocorreu um erro em nossos servidores, por favor tente novamente mais tarde",
+            });
+          }
+          break;
+
+        case 400:
+          if (error.response.data.message === errorMessages.invalidBody) {
+            return Toast({
+              message:
+                "Algum dado está faltando! Por favor, volte e preencha o formulário da procuração novamente",
+            });
+          }
+
+          if (
+            error.response.data.message ===
+            errorMessages.errorClientIdOrEupagoAPI
+          ) {
+            return Toast({
+              message:
+                "Ocorreu um erro inesperado! Pode ser um erro em nossos servidores ou no envio do pagamento, por favor tente novamente mais tarde",
+            });
+          }
+          break;
+
+        case 409:
+          if (error.response.data.message === errorMessages.pendingPayment) {
+            return Toast({
+              message:
+                "Você não pode solicitar uma procuração com um pagamento pendente! Por favor, efetue o pagamento pendente para solicitar outra procuração",
+            });
+          }
+          break;
+
+        default:
+          Toast({
+            message: "Ops! Algo deu errado, por favor tente novamente",
+          });
+          break;
+      }
+    } finally {
+      setPowers("");
+
+      setPersonName("");
+      setPersonMaritalStatus(undefined);
+      setPersonGender(undefined);
+      setPersonNationality("");
+      setPersonCountry(undefined);
+      setPersonConcelho(undefined);
+      setPersonFreguesia(undefined);
+      setRegistrationCalendar(undefined);
+      setTaxIdentificationNumber("");
+      setPersonIdentificationNumber("");
+      setPersonDocument(undefined);
+      setPersonIssuingCountry(undefined);
+      setPersonHabitualResidence("");
+
+      setAttorneyName("");
+      setAttorneyMaritalStatus(undefined);
+      setAttorneyGender(undefined);
+      setAttorneyNationality("");
+      setAttorneyCountry(undefined);
+      setAttorneyConcelho(undefined);
+      setAttorneyFreguesia(undefined);
+      setAttorneyRegistrationCalendar("");
+      setAttorneyTaxIdentificationNumber("");
+      setAttorneyIdentificationNumber("");
+      setAttorneyDocument(undefined);
+      setAttorneyIssuingCountry(undefined);
+      setAttorneyHabitualResidence("");
+      setAttorneys([]);
+
+      setDateOfPowerOfAttorney("");
+      setDateOfAttorney("");
+      setPlaceOfAttorney("");
+      setReplaceWithSomeoneElse(undefined);
+      setConcludeBusinessWithYourself(undefined);
     }
   }
 

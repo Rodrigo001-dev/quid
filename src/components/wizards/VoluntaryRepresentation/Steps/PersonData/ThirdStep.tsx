@@ -3,7 +3,7 @@ import { useWizard } from "react-use-wizard";
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 import { GenericStep } from "../../../GenericStep";
-// import { Toast } from "@/components/shared/Toast";
+import { Toast } from "@/components/shared/Toast";
 
 interface PowersIntendsConferProps {
   isCheckAllDataStep?: boolean;
@@ -18,6 +18,9 @@ export function PowersIntendsConfer({
 
   function handleGoToNextStep() {
     if (powers.trim() === "") {
+      return Toast({
+        message: "O campo dos poderes que pretende conferir é obrigatório",
+      });
     }
 
     nextStep();

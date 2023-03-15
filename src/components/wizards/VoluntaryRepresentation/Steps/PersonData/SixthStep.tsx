@@ -3,11 +3,13 @@ import { useWizard } from "react-use-wizard";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
+import { Toast } from "@/components/shared/Toast";
 
-import { countries } from "../../../../../utils/countries";
-import { concelhos } from "../../../../../utils/concelho";
-import { freguesias } from "../../../../../utils/freguesia";
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
+import { countries } from "@/utils/countries";
+import { concelhos } from "@/utils/concelho";
+import { freguesias } from "@/utils/freguesia";
 
 interface PlaceOfBirthAndNationalityStepProps {
   isCheckAllDataStep?: boolean;
@@ -29,12 +31,30 @@ export function PlaceOfBirthAndNationalityStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      personNationality.trim() === "" ||
+      personCountry === "Escolha um país" ||
+      !personCountry ||
+      !personConcelho ||
+      personConcelho === "Escolha um concelho" ||
+      !personFreguesia ||
+      personFreguesia === "Escolha uma freguesia"
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       title="Qual a sua naturalidade e nacionalidade?"
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“A naturalidade designa o lugar onde nasceu. A nacionalidade designa o país do qual é cidadão.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >

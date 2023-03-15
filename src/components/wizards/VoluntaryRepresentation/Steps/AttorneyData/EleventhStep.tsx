@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
+import { Toast } from "@/components/shared/Toast";
 
-import { countries } from "../../../../../utils/countries";
-import { concelhos } from "../../../../../utils/concelho";
-import { freguesias } from "../../../../../utils/freguesia";
+import { countries } from "@/utils/countries";
+import { concelhos } from "@/utils/concelho";
+import { freguesias } from "@/utils/freguesia";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -31,12 +31,30 @@ export function PlaceOfBirthAndNationalityAttorneyStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      attorneyNationality.trim() === "" ||
+      !attorneyCountry ||
+      attorneyCountry === "Escolha um país" ||
+      !attorneyConcelho ||
+      attorneyConcelho === "Escolha um concelho" ||
+      !attorneyFreguesia ||
+      attorneyFreguesia === "Escolha uma freguesia"
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
       title="Qual a naturalidade e nacionalidade do procurador?"
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“A naturalidade designa o lugar onde nasceu. A nacionalidade designa o país do qual é cidadão.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >

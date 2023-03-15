@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
+import { Toast } from "@/components/shared/Toast";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -17,12 +17,22 @@ export function CurrentResidenceStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (personHabitualResidence.trim() === "") {
+      return Toast({
+        message: "O campo da sua residência habitual é obrigatório",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       title="Por favor, indique a sua residência habitual."
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Sim."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“O texto que redige aqui é integrado seu documento final.”"
     >
       <textarea

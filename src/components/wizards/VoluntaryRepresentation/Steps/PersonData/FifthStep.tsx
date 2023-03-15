@@ -4,6 +4,7 @@ import * as Label from "@radix-ui/react-label";
 import { RadioGroup } from "../../../RadioGroup";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
+import { Toast } from "@/components/shared/Toast";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -25,12 +26,22 @@ export function PersonalDataStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (personName.trim() === "" || !personMaritalStatus || !personGender) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       title="Por favor, Introduza os seus dados pessoais"
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“O documento pelo qual se conferem poderes representativos deve conter a identificação do representado, ou seja, de quem confere os poderes.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >

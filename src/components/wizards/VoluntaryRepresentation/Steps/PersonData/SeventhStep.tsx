@@ -4,6 +4,7 @@ import { useWizard } from "react-use-wizard";
 import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
+import { Toast } from "@/components/shared/Toast";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -32,12 +33,30 @@ export function CivilIdentificationStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      registrationCalendar.trim() === "" ||
+      taxIdentificationNumber.trim() === "" ||
+      !personDocument ||
+      personDocument === "Documento de identificação" ||
+      personIdentificationNumber.trim() === "" ||
+      !personIssuingCountry ||
+      personIssuingCountry === "País emissor"
+    ) {
+      return Toast({
+        message: "O campo dos poderes que pretende conferir é obrigatório",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       title="Por favor, introduza os seus dados de identificação civil."
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
     >
       <div className="grid grid-cols-2 gap-8 mb-5">
         <section className="space-y-3">

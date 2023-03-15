@@ -1,6 +1,8 @@
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 import { useWizard } from "react-use-wizard";
 
+import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+
+import { Toast } from "@/components/shared/Toast";
 import { GenericStep } from "../../../GenericStep";
 
 interface AttorneyCurrentResidenceStepProps {
@@ -15,12 +17,22 @@ export function AttorneyCurrentResidenceStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (attorneyHabitualResidence.trim() === "") {
+      return Toast({
+        message: "O campo da residência habitual do procurador é obrigatório",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
       title="Por favor, indique a residência habitual do procurador."
       firstButtonContent="Sim."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“O texto que redige aqui é integrado seu documento final.”"
     >
       <textarea

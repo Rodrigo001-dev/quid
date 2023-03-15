@@ -5,6 +5,7 @@ import * as Label from "@radix-ui/react-label";
 import { GenericStep } from "@/components/wizards/GenericStep";
 import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 import { RadioGroup } from "@/components/wizards/RadioGroup";
+import { Toast } from "@/components/shared/Toast";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
@@ -26,12 +27,26 @@ export function AttorneyPersonalDataStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      attorneyName.trim() === "" ||
+      !attorneyMaritalStatus ||
+      !attorneyGender
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
       title="Por favor, Introduza os dados pessoais do procurador"
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
       instructions="“O procurador tem a faculdade de celebrar os atos ou negócios em nome do mandate dentro dos limites conferidos pela procuração.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >

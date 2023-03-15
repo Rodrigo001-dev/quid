@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "@/components/wizards/GenericStep";
 import { Select } from "@/components/wizards/Select";
 import { InputAndLabel } from "@/components/wizards/InputAndLabel";
+import { Toast } from "@/components/shared/Toast";
 
 import { identificationDocument } from "@/utils/identificationDocument";
 import { countries } from "@/utils/countries";
@@ -32,12 +32,30 @@ export function AttorneyCivilIdentificationStep({
 
   const { nextStep } = useWizard();
 
+  function handleGoToNextStep() {
+    if (
+      attorneyRegistrationCalendar.trim() === "" ||
+      !attorneyDocument ||
+      attorneyDocument === "Documento de identificação" ||
+      attorneyTaxIdentificationNumber.trim() === "" ||
+      attorneyIdentificationNumber.trim() === "" ||
+      !attorneyIssuingCountry ||
+      attorneyIssuingCountry === "País emissor"
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    nextStep();
+  }
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
       title="Por favor, introduza os dados de identificação civil do procurador."
       firstButtonContent="Continuar."
-      onClickFirstButton={() => nextStep()}
+      onClickFirstButton={() => handleGoToNextStep()}
     >
       <div className="grid grid-cols-2 gap-8 mb-5">
         <section className="space-y-3">
