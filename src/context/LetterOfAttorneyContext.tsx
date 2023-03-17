@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
+import { useRouter } from "next/router";
 import { jsPDF } from "jspdf";
 
 import { Toast } from "@/components/shared/Toast";
@@ -24,6 +25,8 @@ export const LetterOfAttorneyContext = createContext(
 export const LetterOfAttorneyContextProvider = ({
   children,
 }: LetterOfAttorneyContextProps) => {
+  const router = useRouter();
+
   // PERSON
   const [powers, setPowers] = useState("");
   const [personName, setPersonName] = useState("");
@@ -125,6 +128,8 @@ export const LetterOfAttorneyContextProvider = ({
         customerName,
         content: pdfBase64,
       });
+
+      router.push("/thanks");
     } catch (error) {
       switch (error.response.status) {
         case 405:
