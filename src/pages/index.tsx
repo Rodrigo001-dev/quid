@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { Header } from "@/components/shared/Header";
-import { ButtonRedirectToLetterOfAttorney } from "@/components/shared/ButtonRedirectToLetterOfAttorney";
+import { NavigationButton } from "@/components/shared/NavigationButton";
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
           </p>
 
           <div className="max-w-[547px] flex items-center justify-start">
-            <ButtonRedirectToLetterOfAttorney text="Experimente já!" />
+            <NavigationButton href="/letterofattorney" text="Experimente já!" />
             <span className="text-lg ml-10">Tem dúvidas? Nós ajudamos.</span>
           </div>
         </main>

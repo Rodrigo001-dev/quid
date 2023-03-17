@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ButtonRedirectToLetterOfAttorney } from "./ButtonRedirectToLetterOfAttorney";
+import { NavigationButton } from "./NavigationButton";
 
 import Logo from "../../../public/assets/logo.svg";
 
@@ -16,7 +16,10 @@ export function Header({ isHomePage }: HeaderProps) {
       </div>
       {isHomePage && (
         <nav>
-          <ButtonRedirectToLetterOfAttorney text="Redigir uma Procuração" />
+          <NavigationButton
+            href="/letterofattorney"
+            text="Redigir uma Procuração"
+          />
         </nav>
       )}
     </header>
