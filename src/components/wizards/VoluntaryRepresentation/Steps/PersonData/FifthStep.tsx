@@ -6,7 +6,7 @@ import { GenericStep } from "../../../GenericStep";
 import { InputAndLabel } from "../../../InputAndLabel";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { usePersonData } from "@/store/usePersonData";
 
 interface PersonalDataStepProps {
   isCheckAllDataStep?: boolean;
@@ -15,14 +15,17 @@ interface PersonalDataStepProps {
 export function PersonalDataStep({
   isCheckAllDataStep,
 }: PersonalDataStepProps) {
-  const {
-    personName,
-    setPersonName,
-    personMaritalStatus,
-    setPersonMaritalStatus,
-    personGender,
-    setPersonGender,
-  } = useLetterOfAttorneyContext();
+  const personName = usePersonData((state) => state.personName);
+  const personMaritalStatus = usePersonData(
+    (state) => state.personMaritalStatus
+  );
+  const personGender = usePersonData((state) => state.personGender);
+
+  const setPersonName = usePersonData((state) => state.setPersonName);
+  const setPersonMaritalStatus = usePersonData(
+    (state) => state.setPersonMaritalStatus
+  );
+  const setPersonGender = usePersonData((state) => state.setPersonGender);
 
   const { nextStep } = useWizard();
 

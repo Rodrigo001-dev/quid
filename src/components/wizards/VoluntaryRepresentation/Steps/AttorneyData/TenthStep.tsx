@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
@@ -7,7 +6,7 @@ import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 import { RadioGroup } from "@/components/wizards/RadioGroup";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface AttorneyPersonalDataStepProps {
   isCheckAllDataStep?: boolean;
@@ -16,14 +15,17 @@ interface AttorneyPersonalDataStepProps {
 export function AttorneyPersonalDataStep({
   isCheckAllDataStep,
 }: AttorneyPersonalDataStepProps) {
-  const {
-    attorneyName,
-    setAttorneyName,
-    attorneyMaritalStatus,
-    setAttorneyMaritalStatus,
-    attorneyGender,
-    setAttorneyGender,
-  } = useLetterOfAttorneyContext();
+  const attorneyName = useAttorneyData((state) => state.attorneyName);
+  const attorneyMaritalStatus = useAttorneyData(
+    (state) => state.attorneyMaritalStatus
+  );
+  const attorneyGender = useAttorneyData((state) => state.attorneyGender);
+
+  const setAttorneyName = useAttorneyData((state) => state.setAttorneyName);
+  const setAttorneyMaritalStatus = useAttorneyData(
+    (state) => state.setAttorneyMaritalStatus
+  );
+  const setAttorneyGender = useAttorneyData((state) => state.setAttorneyGender);
 
   const { nextStep } = useWizard();
 

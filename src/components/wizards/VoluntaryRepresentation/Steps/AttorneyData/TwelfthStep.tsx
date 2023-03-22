@@ -5,10 +5,11 @@ import { Select } from "@/components/wizards/Select";
 import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 import { Toast } from "@/components/shared/Toast";
 
-import { identificationDocument } from "@/utils/identificationDocument";
-import { countries } from "@/utils/countries";
+import { identificationDocument } from "@/utils/data/identificationDocument";
+import { countries } from "@/utils/data/countries";
 
 import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface AttorneyCivilIdentificationStepProps {
   isCheckAllDataStep?: boolean;
@@ -17,18 +18,35 @@ interface AttorneyCivilIdentificationStepProps {
 export function AttorneyCivilIdentificationStep({
   isCheckAllDataStep,
 }: AttorneyCivilIdentificationStepProps) {
-  const {
-    attorneyDocument,
-    setAttorneyDocument,
-    attorneyRegistrationCalendar,
-    setAttorneyRegistrationCalendar,
-    attorneyTaxIdentificationNumber,
-    setAttorneyTaxIdentificationNumber,
-    attorneyIdentificationNumber,
-    setAttorneyIdentificationNumber,
-    attorneyIssuingCountry,
-    setAttorneyIssuingCountry,
-  } = useLetterOfAttorneyContext();
+  const attorneyDocument = useAttorneyData((state) => state.attorneyDocument);
+  const attorneyRegistrationCalendar = useAttorneyData(
+    (state) => state.attorneyRegistrationCalendar
+  );
+  const attorneyTaxIdentificationNumber = useAttorneyData(
+    (state) => state.attorneyTaxIdentificationNumber
+  );
+  const attorneyIdentificationNumber = useAttorneyData(
+    (state) => state.attorneyIdentificationNumber
+  );
+  const attorneyIssuingCountry = useAttorneyData(
+    (state) => state.attorneyIssuingCountry
+  );
+
+  const setAttorneyDocument = useAttorneyData(
+    (state) => state.setAttorneyDocument
+  );
+  const setAttorneyRegistrationCalendar = useAttorneyData(
+    (state) => state.setAttorneyRegistrationCalendar
+  );
+  const setAttorneyTaxIdentificationNumber = useAttorneyData(
+    (state) => state.setAttorneyTaxIdentificationNumber
+  );
+  const setAttorneyIdentificationNumber = useAttorneyData(
+    (state) => state.setAttorneyIdentificationNumber
+  );
+  const setAttorneyIssuingCountry = useAttorneyData(
+    (state) => state.setAttorneyIssuingCountry
+  );
 
   const { nextStep } = useWizard();
 

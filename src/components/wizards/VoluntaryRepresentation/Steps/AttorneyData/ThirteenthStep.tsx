@@ -4,6 +4,7 @@ import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 
 import { Toast } from "@/components/shared/Toast";
 import { GenericStep } from "../../../GenericStep";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface AttorneyCurrentResidenceStepProps {
   isCheckAllDataStep?: boolean;
@@ -12,8 +13,13 @@ interface AttorneyCurrentResidenceStepProps {
 export function AttorneyCurrentResidenceStep({
   isCheckAllDataStep,
 }: AttorneyCurrentResidenceStepProps) {
-  const { attorneyHabitualResidence, setAttorneyHabitualResidence } =
-    useLetterOfAttorneyContext();
+  const attorneyHabitualResidence = useAttorneyData(
+    (state) => state.attorneyHabitualResidence
+  );
+
+  const setAttorneyHabitualResidence = useAttorneyData(
+    (state) => state.setAttorneyHabitualResidence
+  );
 
   const { nextStep } = useWizard();
 

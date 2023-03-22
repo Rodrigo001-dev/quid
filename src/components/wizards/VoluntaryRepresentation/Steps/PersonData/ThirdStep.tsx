@@ -1,6 +1,6 @@
 import { useWizard } from "react-use-wizard";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { usePersonData } from "@/store/usePersonData";
 
 import { GenericStep } from "../../../GenericStep";
 import { Toast } from "@/components/shared/Toast";
@@ -12,7 +12,8 @@ interface PowersIntendsConferProps {
 export function PowersIntendsConfer({
   isCheckAllDataStep,
 }: PowersIntendsConferProps) {
-  const { powers, setPowers } = useLetterOfAttorneyContext();
+  const powers = usePersonData((state) => state.powers);
+  const setPowers = usePersonData((state) => state.setPowers);
 
   const { nextStep } = useWizard();
 

@@ -3,7 +3,7 @@ import { useWizard } from "react-use-wizard";
 import { GenericStep } from "../../../GenericStep";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { usePersonData } from "@/store/usePersonData";
 
 interface CurrentResidenceStepProps {
   isCheckAllDataStep?: boolean;
@@ -12,8 +12,13 @@ interface CurrentResidenceStepProps {
 export function CurrentResidenceStep({
   isCheckAllDataStep,
 }: CurrentResidenceStepProps) {
-  const { personHabitualResidence, setPersonHabitualResidence } =
-    useLetterOfAttorneyContext();
+  const personHabitualResidence = usePersonData(
+    (state) => state.personHabitualResidence
+  );
+
+  const setPersonHabitualResidence = usePersonData(
+    (state) => state.setPersonHabitualResidence
+  );
 
   const { nextStep } = useWizard();
 

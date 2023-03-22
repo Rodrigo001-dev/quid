@@ -6,7 +6,8 @@ import { RadioGroup } from "@/components/wizards/RadioGroup";
 import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { useLetterOfAttorney } from "@/store/useLetterOfAttorney";
+import { useAdditionalInformation } from "@/store/useAdditionalInformation";
 
 interface AdditionalInformationStepProps {
   isCheckAllDataStep?: boolean;
@@ -15,18 +16,33 @@ interface AdditionalInformationStepProps {
 export function AdditionalInformationStep({
   isCheckAllDataStep,
 }: AdditionalInformationStepProps) {
-  const {
-    dateOfPowerOfAttorney,
-    setDateOfPowerOfAttorney,
-    dateOfAttorney,
-    setDateOfAttorney,
-    placeOfAttorney,
-    setPlaceOfAttorney,
-    replaceWithSomeoneElse,
-    setReplaceWithSomeoneElse,
-    concludeBusinessWithYourself,
-    setConcludeBusinessWithYourself,
-  } = useLetterOfAttorneyContext();
+  const dateOfPowerOfAttorney = useLetterOfAttorney(
+    (state) => state.dateOfPowerOfAttorney
+  );
+  const dateOfAttorney = useLetterOfAttorney((state) => state.dateOfAttorney);
+  const placeOfAttorney = useLetterOfAttorney((state) => state.placeOfAttorney);
+  const replaceWithSomeoneElse = useAdditionalInformation(
+    (state) => state.replaceWithSomeoneElse
+  );
+  const concludeBusinessWithYourself = useAdditionalInformation(
+    (state) => state.concludeBusinessWithYourself
+  );
+
+  const setDateOfPowerOfAttorney = useLetterOfAttorney(
+    (state) => state.setDateOfPowerOfAttorney
+  );
+  const setDateOfAttorney = useLetterOfAttorney(
+    (state) => state.setDateOfAttorney
+  );
+  const setPlaceOfAttorney = useLetterOfAttorney(
+    (state) => state.setPlaceOfAttorney
+  );
+  const setReplaceWithSomeoneElse = useAdditionalInformation(
+    (state) => state.setReplaceWithSomeoneElse
+  );
+  const setConcludeBusinessWithYourself = useAdditionalInformation(
+    (state) => state.setConcludeBusinessWithYourself
+  );
 
   const { nextStep } = useWizard();
 

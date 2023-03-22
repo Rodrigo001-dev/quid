@@ -5,11 +5,11 @@ import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 import { Toast } from "@/components/shared/Toast";
 
-import { countries } from "@/utils/countries";
-import { concelhos } from "@/utils/concelho";
-import { freguesias } from "@/utils/freguesia";
+import { countries } from "@/utils/data/countries";
+import { concelhos } from "@/utils/data/concelho";
+import { freguesias } from "@/utils/data/freguesia";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface PlaceOfBirthAndNationalityAttorneyStepProps {
   isCheckAllDataStep?: boolean;
@@ -18,16 +18,25 @@ interface PlaceOfBirthAndNationalityAttorneyStepProps {
 export function PlaceOfBirthAndNationalityAttorneyStep({
   isCheckAllDataStep,
 }: PlaceOfBirthAndNationalityAttorneyStepProps) {
-  const {
-    attorneyNationality,
-    setAttorneyNationality,
-    attorneyCountry,
-    setAttorneyCountry,
-    attorneyConcelho,
-    setAttorneyConcelho,
-    attorneyFreguesia,
-    setAttorneyFreguesia,
-  } = useLetterOfAttorneyContext();
+  const attorneyNationality = useAttorneyData(
+    (state) => state.attorneyNationality
+  );
+  const attorneyCountry = useAttorneyData((state) => state.attorneyCountry);
+  const attorneyConcelho = useAttorneyData((state) => state.attorneyConcelho);
+  const attorneyFreguesia = useAttorneyData((state) => state.attorneyFreguesia);
+
+  const setAttorneyNationality = useAttorneyData(
+    (state) => state.setAttorneyNationality
+  );
+  const setAttorneyCountry = useAttorneyData(
+    (state) => state.setAttorneyCountry
+  );
+  const setAttorneyConcelho = useAttorneyData(
+    (state) => state.setAttorneyConcelho
+  );
+  const setAttorneyFreguesia = useAttorneyData(
+    (state) => state.setAttorneyFreguesia
+  );
 
   const { nextStep } = useWizard();
 

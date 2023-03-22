@@ -6,10 +6,9 @@ import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
-
-import { countries } from "@/utils/countries";
-import { identificationDocument } from "@/utils/identificationDocument";
+import { countries } from "@/utils/data/countries";
+import { identificationDocument } from "@/utils/data/identificationDocument";
+import { usePersonData } from "@/store/usePersonData";
 
 interface CivilIdentificationStepProps {
   isCheckAllDataStep?: boolean;
@@ -18,18 +17,33 @@ interface CivilIdentificationStepProps {
 export function CivilIdentificationStep({
   isCheckAllDataStep,
 }: CivilIdentificationStepProps) {
-  const {
-    registrationCalendar,
-    setRegistrationCalendar,
-    taxIdentificationNumber,
-    setTaxIdentificationNumber,
-    personDocument,
-    setPersonDocument,
-    personIdentificationNumber,
-    setPersonIdentificationNumber,
-    personIssuingCountry,
-    setPersonIssuingCountry,
-  } = useLetterOfAttorneyContext();
+  const registrationCalendar = usePersonData(
+    (state) => state.registrationCalendar
+  );
+  const taxIdentificationNumber = usePersonData(
+    (state) => state.taxIdentificationNumber
+  );
+  const personIdentificationNumber = usePersonData(
+    (state) => state.personIdentificationNumber
+  );
+  const personDocument = usePersonData((state) => state.personDocument);
+  const personIssuingCountry = usePersonData(
+    (state) => state.personIssuingCountry
+  );
+
+  const setRegistrationCalendar = usePersonData(
+    (state) => state.setRegistrationCalendar
+  );
+  const setTaxIdentificationNumber = usePersonData(
+    (state) => state.setTaxIdentificationNumber
+  );
+  const setPersonIdentificationNumber = usePersonData(
+    (state) => state.setPersonIdentificationNumber
+  );
+  const setPersonDocument = usePersonData((state) => state.setPersonDocument);
+  const setPersonIssuingCountry = usePersonData(
+    (state) => state.setPersonIssuingCountry
+  );
 
   const { nextStep } = useWizard();
 

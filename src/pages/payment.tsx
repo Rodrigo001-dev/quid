@@ -1,11 +1,22 @@
 import { FormEvent, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as RadixRadioGroup from "@radix-ui/react-radio-group";
 import * as Checkbox from "@radix-ui/react-checkbox";
 
-import { useLetterOfAttorneyContext } from "../hooks/useLetterOfAttorneyContext";
+import { api } from "@/services/api";
+
+import { Toast } from "@/components/shared/Toast";
+
+import { usePersonData } from "@/store/usePersonData";
+import { useAttorneyData } from "@/store/useAttorneyData";
+import { useLetterOfAttorney } from "@/store/useLetterOfAttorney";
+import { useAdditionalInformation } from "@/store/useAdditionalInformation";
+
+import { errorMessages } from "@/utils/errors/errorMessages";
+import { generatePDF } from "@/utils/generatePDF";
 
 export default function Payment() {
   const [email, setEmail] = useState("");
@@ -14,17 +25,129 @@ export default function Payment() {
   const [paymentMethod, setPaymentMethod] = useState<string | undefined>(
     undefined
   );
+
+  const router = useRouter();
   console.log(
     "🚀 ~ file: payment.tsx:15 ~ Payment ~ paymentMethod:",
     paymentMethod
   );
 
-  const { makePayment } = useLetterOfAttorneyContext();
+  async function makePayment() {
+    try {
+      const pdfBytes = generatePDF();
+      const pdfBase64 = Buffer.from(pdfBytes).toString("base64");
+
+      await api.post("api/payment", {
+        paymentMethod,
+        email,
+        alias,
+        customerName,
+        content: pdfBase64,
+      });
+
+      router.push("/thanks");
+    } catch (error) {
+      switch (error.response.status) {
+        case 405:
+          if (error.response.data.message === errorMessages.methodNotAllowed) {
+            return Toast({
+              message:
+                "Ocorreu um erro em nossos servidores, por favor tente novamente mais tarde",
+            });
+          }
+          break;
+
+        case 400:
+          if (error.response.data.message === errorMessages.invalidBody) {
+            return Toast({
+              message:
+                "Algum dado está faltando! Por favor, volte e preencha o formulário da procuração novamente",
+            });
+          }
+
+          if (
+            error.response.data.message ===
+            errorMessages.errorClientIdOrEupagoAPI
+          ) {
+            return Toast({
+              message:
+                "Ocorreu um erro inesperado! Pode ser um erro em nossos servidores ou no envio do pagamento, por favor tente novamente mais tarde",
+            });
+          }
+          break;
+
+        case 409:
+          if (error.response.data.message === errorMessages.pendingPayment) {
+            return Toast({
+              message:
+                "Você não pode solicitar uma procuração com um pagamento pendente! Por favor, efetue o pagamento pendente para solicitar outra procuração",
+            });
+          }
+          break;
+
+        default:
+          Toast({
+            message: "Ops! Algo deu errado, por favor tente novamente",
+          });
+          break;
+      }
+    } finally {
+      usePersonData.setState({
+        powers: "",
+        personName: "",
+        personMaritalStatus: undefined,
+        personGender: undefined,
+        personNationality: "",
+        personCountry: undefined,
+        personConcelho: undefined,
+        personFreguesia: undefined,
+        registrationCalendar: "",
+        taxIdentificationNumber: "",
+        personIdentificationNumber: "",
+        personDocument: undefined,
+        personIssuingCountry: undefined,
+        personHabitualResidence: "",
+      });
+
+      useAttorneyData.setState({
+        attorneyName: "",
+        attorneyMaritalStatus: undefined,
+        attorneyGender: undefined,
+        attorneyNationality: "",
+        attorneyCountry: undefined,
+        attorneyConcelho: undefined,
+        attorneyFreguesia: undefined,
+        attorneyRegistrationCalendar: "",
+        attorneyTaxIdentificationNumber: "",
+        attorneyIdentificationNumber: "",
+        attorneyDocument: undefined,
+        attorneyIssuingCountry: undefined,
+        attorneyHabitualResidence: "",
+        attorneys: [],
+      });
+
+      useLetterOfAttorney.setState({
+        dateOfAttorney: "",
+        dateOfPowerOfAttorney: "",
+        placeOfAttorney: "",
+      });
+
+      useAdditionalInformation.setState({
+        replaceWithSomeoneElse: undefined,
+        concludeBusinessWithYourself: undefined,
+      });
+
+      setEmail("");
+      setAlias("");
+      setCustomerName("");
+      setPaymentMethod(undefined);
+    }
+  }
 
   async function handleSubmitPayment(event: FormEvent) {
     event.preventDefault();
 
-    await makePayment({ paymentMethod, email, alias, customerName });
+    await makePayment();
   }
 
   return (

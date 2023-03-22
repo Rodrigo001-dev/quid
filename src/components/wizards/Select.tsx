@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from "react";
-import { concelhos } from "../../utils/concelho";
-import { countries } from "../../utils/countries";
-import { freguesias } from "../../utils/freguesia";
-import { identificationDocument } from "../../utils/identificationDocument";
+import { concelhos } from "../../utils/data/concelho";
+import { countries } from "../../utils/data/countries";
+import { freguesias } from "../../utils/data/freguesia";
+import { identificationDocument } from "../../utils/data/identificationDocument";
 
 interface SelectProps {
   id: string;

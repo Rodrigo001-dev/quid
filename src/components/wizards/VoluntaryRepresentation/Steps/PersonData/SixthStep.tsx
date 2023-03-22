@@ -5,11 +5,10 @@ import { InputAndLabel } from "../../../InputAndLabel";
 import { Select } from "../../../Select";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
-
-import { countries } from "@/utils/countries";
-import { concelhos } from "@/utils/concelho";
-import { freguesias } from "@/utils/freguesia";
+import { countries } from "@/utils/data/countries";
+import { concelhos } from "@/utils/data/concelho";
+import { freguesias } from "@/utils/data/freguesia";
+import { usePersonData } from "@/store/usePersonData";
 
 interface PlaceOfBirthAndNationalityStepProps {
   isCheckAllDataStep?: boolean;
@@ -18,16 +17,17 @@ interface PlaceOfBirthAndNationalityStepProps {
 export function PlaceOfBirthAndNationalityStep({
   isCheckAllDataStep,
 }: PlaceOfBirthAndNationalityStepProps) {
-  const {
-    personNationality,
-    setPersonNationality,
-    personCountry,
-    setPersonCountry,
-    personConcelho,
-    setPersonConcelho,
-    personFreguesia,
-    setPersonFreguesia,
-  } = useLetterOfAttorneyContext();
+  const personNationality = usePersonData((state) => state.personNationality);
+  const personCountry = usePersonData((state) => state.personCountry);
+  const personConcelho = usePersonData((state) => state.personConcelho);
+  const personFreguesia = usePersonData((state) => state.personFreguesia);
+
+  const setPersonNationality = usePersonData(
+    (state) => state.setPersonNationality
+  );
+  const setPersonCountry = usePersonData((state) => state.setPersonCountry);
+  const setPersonConcelho = usePersonData((state) => state.setPersonConcelho);
+  const setPersonFreguesia = usePersonData((state) => state.setPersonFreguesia);
 
   const { nextStep } = useWizard();
 
