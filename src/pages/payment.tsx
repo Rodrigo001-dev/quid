@@ -25,6 +25,7 @@ export default function Payment() {
   const [paymentMethod, setPaymentMethod] = useState<string | undefined>(
     undefined
   );
+  const [isSubmitButtonDisable, setIsSubmitButtonDisable] = useState(false);
 
   const router = useRouter();
   console.log(
@@ -34,6 +35,8 @@ export default function Payment() {
 
   async function makePayment() {
     try {
+      setIsSubmitButtonDisable(true);
+
       const pdfBytes = generatePDF();
       const pdfBase64 = Buffer.from(pdfBytes).toString("base64");
 
@@ -145,6 +148,7 @@ export default function Payment() {
       setAlias("");
       setCustomerName("");
       setPaymentMethod(undefined);
+      setIsSubmitButtonDisable(false);
     }
   }
 
@@ -393,8 +397,11 @@ export default function Payment() {
             </div>
 
             <button
-              className="flex items-center justify-center w-80 h-12 py-3 mt-7 font-bold text-lg rounded-lg transition-colors duration-300 text-white bg-primary-500 hover:bg-primary-400"
+              className={`flex items-center justify-center w-80 h-12 py-3 mt-7 font-bold text-lg rounded-lg transition-colors duration-300 text-white bg-primary-500 hover:bg-primary-400 ${
+                isSubmitButtonDisable && "bg-gray-400 cursor-not-allowed"
+              }`}
               type="submit"
+              disabled={isSubmitButtonDisable}
             >
               Finalizar Pagamento
             </button>
