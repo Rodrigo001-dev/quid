@@ -1,7 +1,5 @@
 import { useWizard } from "react-use-wizard";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
-
 import { Toast } from "@/components/shared/Toast";
 import { GenericStep } from "../../../GenericStep";
 import { useAttorneyData } from "@/store/useAttorneyData";

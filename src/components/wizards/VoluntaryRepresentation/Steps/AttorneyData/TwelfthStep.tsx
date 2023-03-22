@@ -8,7 +8,6 @@ import { Toast } from "@/components/shared/Toast";
 import { identificationDocument } from "@/utils/data/identificationDocument";
 import { countries } from "@/utils/data/countries";
 
-import { useLetterOfAttorneyContext } from "@/hooks/useLetterOfAttorneyContext";
 import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface AttorneyCivilIdentificationStepProps {
