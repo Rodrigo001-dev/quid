@@ -47,6 +47,10 @@ export default function Payment() {
 
       router.push("/thanks");
     } catch (error) {
+      console.log(
+        "🚀 ~ file: payment.tsx:50 ~ makePayment ~ error:",
+        error.response.status
+      );
       switch (error.response.status) {
         case 405:
           if (error.response.data.message === errorMessages.methodNotAllowed) {
