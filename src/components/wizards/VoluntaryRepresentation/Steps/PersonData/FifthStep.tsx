@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 import * as Label from "@radix-ui/react-label";
 
@@ -38,6 +39,10 @@ export function PersonalDataStep({
 
     nextStep();
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep

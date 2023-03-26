@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -9,6 +9,10 @@ export function SpecialCaseStep() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep

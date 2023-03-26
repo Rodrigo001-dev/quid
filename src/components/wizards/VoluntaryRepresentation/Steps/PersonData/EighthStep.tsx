@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -32,6 +33,10 @@ export function CurrentResidenceStep({
     nextStep();
   }
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <GenericStep
       title="Por favor, indique a sua residência habitual."
@@ -46,7 +51,6 @@ export function CurrentResidenceStep({
         id="habitualResidence"
         cols={59}
         rows={4}
-        autoFocus={!isCheckAllDataStep ? true : false}
         value={personHabitualResidence}
         onChange={(event) => setPersonHabitualResidence(event.target.value)}
       />

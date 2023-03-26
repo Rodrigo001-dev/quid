@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { usePersonData } from "@/store/usePersonData";
 
 import { GenericStep } from "../../../GenericStep";
 import { Toast } from "@/components/shared/Toast";
-import { useEffect } from "react";
 
 interface PowersIntendsConferProps {
   isCheckAllDataStep?: boolean;
@@ -28,6 +28,10 @@ export function PowersIntendsConfer({
     nextStep();
   }
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
@@ -42,7 +46,6 @@ export function PowersIntendsConfer({
         placeholder="Digite os poderes"
         cols={59}
         rows={4}
-        autoFocus={!isCheckAllDataStep ? true : false}
         value={powers}
         onChange={(event) => setPowers(event.target.value)}
       />

@@ -11,6 +11,10 @@ import { AttorneyCurrentResidenceStep } from "./ThirteenthStep";
 export function CheckAllAttorneyData() {
   const { nextStep } = useWizard();
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <GenericStep
       title="Verifique se os dados do procurador estão corretos"

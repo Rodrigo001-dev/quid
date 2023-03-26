@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
@@ -64,6 +64,10 @@ export function CivilIdentificationStep({
 
     nextStep();
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep

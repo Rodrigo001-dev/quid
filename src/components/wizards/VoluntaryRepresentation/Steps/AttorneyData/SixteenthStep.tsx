@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "@/components/wizards/GenericStep";
 
 export function DeadlinePowerOfAttorneyStep() {
   const { nextStep } = useWizard();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <GenericStep

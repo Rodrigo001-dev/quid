@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useWizard } from "react-use-wizard";
 
 import { Toast } from "@/components/shared/Toast";
@@ -31,6 +32,10 @@ export function AttorneyCurrentResidenceStep({
     nextStep();
   }
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <GenericStep
       isCheckAllDataStep={isCheckAllDataStep}
@@ -45,7 +50,6 @@ export function AttorneyCurrentResidenceStep({
         id="habitualResidence"
         cols={59}
         rows={4}
-        autoFocus={!isCheckAllDataStep ? true : false}
         value={attorneyHabitualResidence}
         onChange={(event) => setAttorneyHabitualResidence(event.target.value)}
       />
