@@ -48,7 +48,7 @@ export function PersonalDataStep({
       instructions="“O documento pelo qual se conferem poderes representativos deve conter a identificação do representado, ou seja, de quem confere os poderes.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >
-      <div className="w-screen max-w-[720px] grid grid-cols-3 mb-6">
+      <div className="w-screen max-w-[720px] grid grid-rows-1 gap-5 justify-center md:gap-0 md:grid-cols-3 mb-6">
         <section>
           <InputAndLabel
             id="personName"

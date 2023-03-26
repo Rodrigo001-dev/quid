@@ -11,7 +11,7 @@ interface HeaderProps {
 export function Header({ isHomePage }: HeaderProps) {
   return (
     <header className="flex items-center justify-between px-32 py-8">
-      <div>
+      <div className="hidden md:flex">
         <Image src={Logo} alt="Quid" />
       </div>
       {isHomePage && (
@@ -19,6 +19,7 @@ export function Header({ isHomePage }: HeaderProps) {
           <NavigationButton
             href="/letterofattorney"
             text="Redigir uma Procuração"
+            isHeaderButton
           />
         </nav>
       )}

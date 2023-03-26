@@ -67,8 +67,8 @@ export function PlaceOfBirthAndNationalityAttorneyStep({
       instructions="“A naturalidade designa o lugar onde nasceu. A nacionalidade designa o país do qual é cidadão.”"
       legalBase="Art. 46.º, n.º 1, al. c) do CN"
     >
-      <div className="grid grid-cols-2 gap-8 mb-5">
-        <section className="-ml-[18px]">
+      <div className="grid grid-rows-1 md:grid-cols-2 justify-center gap-8 mb-5">
+        <section className="md:-ml-[18px]">
           <InputAndLabel
             id="attorneyNationality"
             labelContent="Qual a nacionalidade do procurador"

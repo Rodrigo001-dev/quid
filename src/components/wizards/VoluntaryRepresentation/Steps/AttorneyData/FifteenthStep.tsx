@@ -117,7 +117,7 @@ export function AdditionalInformationStep({
           />
         </section>
 
-        <section className="mb-6 grid grid-cols-2">
+        <section className="mb-6 grid grid-rows-1 md:grid-cols-2">
           <InputAndLabel
             id="dateOfAttorney"
             labelContent="Qual a data da procuração?"

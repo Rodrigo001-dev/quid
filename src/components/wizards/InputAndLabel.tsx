@@ -19,7 +19,7 @@ export function InputAndLabel({
   onChange,
 }: InputAndLabelProps) {
   return (
-    <div className="flex flex-col flex-wrap px-5">
+    <div className="flex flex-col flex-wrap md:px-5">
       <Label.Root
         className="mb-1 text-base font-semibold leading-[35px] text-text-500"
         htmlFor={id}

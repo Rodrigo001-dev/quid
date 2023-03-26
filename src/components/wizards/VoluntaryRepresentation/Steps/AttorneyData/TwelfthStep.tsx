@@ -74,7 +74,7 @@ export function AttorneyCivilIdentificationStep({
       firstButtonContent="Continuar."
       onClickFirstButton={() => handleGoToNextStep()}
     >
-      <div className="grid grid-cols-2 gap-8 mb-5">
+      <div className="grid grid-rows-1 md:grid-cols-2 gap-8 justify-center md:ml-10 mb-5">
         <section className="space-y-3">
           <Select
             id="identificationDocumentAttorney"
