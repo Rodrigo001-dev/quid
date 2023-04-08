@@ -24,6 +24,19 @@ export function generatePDF() {
   const { attorneys } = useAttorneyData.getState();
 
   const doc = new jsPDF();
+  const marginTop = 30;
+  const marginBottom = 20;
+  const textHeight = doc.getTextDimensions("Procuração").h;
+
+  doc.text(
+    "Procuração",
+    doc.internal.pageSize.getWidth() / 2,
+    marginTop + textHeight / 2,
+    {
+      align: "center",
+    }
+  );
+
   const lines = doc.splitTextToSize(
     `${personName}, ${personMaritalStatus}, ${
       personFreguesia &&
@@ -34,7 +47,8 @@ export function generatePDF() {
         `procurador(a) o/a Senhor(a) ${attorney.attorneyName}, ${
           attorney.attorneyMaritalStatus
         }, ${
-          attorney.attorneyConcelho && `natural de ${attorney.attorneyConcelho}`
+          attorney.attorneyConcelho !== undefined &&
+          `natural de ${attorney.attorneyConcelho}`
         }, ${attorney.attorneyCountry}, de nacionalidade ${
           attorney.attorneyNationality
         }, titular do ${attorney.attorneyDocument} número ${
@@ -43,12 +57,11 @@ export function generatePDF() {
           attorney.attorneyRegistrationCalendar
         }, e contribuinte fiscal número ${
           attorney.attorneyTaxIdentificationNumber
-        }, residente em ${
-          attorney.attorneyHabitualResidence
-        }. Procurador(a), a quem confere os necessários poderes para, em seu nome e representação`
-    )} ${powers}`,
+        }, residente em ${attorney.attorneyHabitualResidence}.`
+    )} Procurador(a), a quem confere os necessários poderes para, em seu nome e representação ${powers}`,
     190
   );
-  doc.text(lines, 10, 10);
+
+  doc.text(lines, 10, marginTop + textHeight + marginBottom + 10);
   return doc.output("arraybuffer");
 }
