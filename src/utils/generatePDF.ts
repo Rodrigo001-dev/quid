@@ -1,13 +1,52 @@
 import { jsPDF } from "jspdf";
 
 import { usePersonData } from "@/store/usePersonData";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 export function generatePDF() {
-  const { personName, personHabitualResidence } = usePersonData.getState();
+  const {
+    personName,
+    personMaritalStatus,
+    personFreguesia,
+    personConcelho,
+    personCountry,
+    personNationality,
+    personDocument,
+    personHabitualResidence,
+    taxIdentificationNumber,
+    personGender,
+    personIdentificationNumber,
+    personIssuingCountry,
+    powers,
+    registrationCalendar,
+  } = usePersonData.getState();
+
+  const { attorneys } = useAttorneyData.getState();
 
   const doc = new jsPDF();
   const lines = doc.splitTextToSize(
-    `Eu ${personName} declaro que li tudo o que está escrito aqui, minha residencia está localizada no ${personHabitualResidence}`,
+    `${personName}, ${personMaritalStatus}, ${
+      personFreguesia &&
+      personConcelho &&
+      `da freguesia de ${personFreguesia} no concelho de ${personConcelho},`
+    } ${personCountry}, de nacionalidade ${personNationality}, titular do ${personDocument} número ${personIdentificationNumber}, emitido pelo país: ${personIssuingCountry} e válido até ${registrationCalendar}, contribuinte fiscal número ${taxIdentificationNumber}, residente em ${personHabitualResidence}, (“Mandante”), constitui, pela presente, seu/sua bastante ${attorneys.map(
+      (attorney) =>
+        `procurador(a) o/a Senhor(a) ${attorney.attorneyName}, ${
+          attorney.attorneyMaritalStatus
+        }, ${
+          attorney.attorneyConcelho && `natural de ${attorney.attorneyConcelho}`
+        }, ${attorney.attorneyCountry}, de nacionalidade ${
+          attorney.attorneyNationality
+        }, titular do ${attorney.attorneyDocument} número ${
+          attorney.attorneyIdentificationNumber
+        }, emitido pelo país: ${attorney.attorneyIssuingCountry} e válido até ${
+          attorney.attorneyRegistrationCalendar
+        }, e contribuinte fiscal número ${
+          attorney.attorneyTaxIdentificationNumber
+        }, residente em ${
+          attorney.attorneyHabitualResidence
+        }. Procurador(a), a quem confere os necessários poderes para, em seu nome e representação`
+    )} ${powers}`,
     190
   );
   doc.text(lines, 10, 10);

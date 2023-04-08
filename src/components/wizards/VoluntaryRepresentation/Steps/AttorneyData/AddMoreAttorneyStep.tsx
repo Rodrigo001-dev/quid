@@ -32,6 +32,12 @@ export function AddMoreAttorneyStep() {
   const attorneyHabitualResidence = useAttorneyData(
     (state) => state.attorneyHabitualResidence
   );
+  const replaceWithSomeoneElse = useAttorneyData(
+    (state) => state.replaceWithSomeoneElse
+  );
+  const concludeBusinessWithYourself = useAttorneyData(
+    (state) => state.concludeBusinessWithYourself
+  );
   const attorneys = useAttorneyData((state) => state.attorneys);
 
   const setAttorneyName = useAttorneyData((state) => state.setAttorneyName);
@@ -69,6 +75,12 @@ export function AddMoreAttorneyStep() {
   const setAttorneyHabitualResidence = useAttorneyData(
     (state) => state.setAttorneyHabitualResidence
   );
+  const setReplaceWithSomeoneElse = useAttorneyData(
+    (state) => state.setReplaceWithSomeoneElse
+  );
+  const setConcludeBusinessWithYourself = useAttorneyData(
+    (state) => state.setConcludeBusinessWithYourself
+  );
   const setAttorneys = useAttorneyData((state) => state.setAttorneys);
 
   const { nextStep, goToStep } = useWizard();
@@ -88,6 +100,8 @@ export function AddMoreAttorneyStep() {
       attorneyDocument,
       attorneyIssuingCountry,
       attorneyHabitualResidence,
+      replaceWithSomeoneElse,
+      concludeBusinessWithYourself,
     };
 
     setAttorneys([...attorneys, attorneyData]);
@@ -109,8 +123,10 @@ export function AddMoreAttorneyStep() {
     setAttorneyDocument(undefined);
     setAttorneyIssuingCountry(undefined);
     setAttorneyHabitualResidence("");
+    setReplaceWithSomeoneElse(undefined);
+    setConcludeBusinessWithYourself(undefined);
 
-    goToStep(9);
+    goToStep(10);
   }
 
   function handleGoToNextStep() {

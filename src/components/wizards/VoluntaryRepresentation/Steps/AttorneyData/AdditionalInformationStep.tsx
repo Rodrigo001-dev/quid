@@ -4,11 +4,9 @@ import * as Label from "@radix-ui/react-label";
 
 import { GenericStep } from "@/components/wizards/GenericStep";
 import { RadioGroup } from "@/components/wizards/RadioGroup";
-import { InputAndLabel } from "@/components/wizards/InputAndLabel";
 import { Toast } from "@/components/shared/Toast";
 
-import { useLetterOfAttorney } from "@/store/useLetterOfAttorney";
-import { useAdditionalInformation } from "@/store/useAdditionalInformation";
+import { useAttorneyData } from "@/store/useAttorneyData";
 
 interface AdditionalInformationStepProps {
   isCheckAllDataStep?: boolean;
@@ -17,44 +15,25 @@ interface AdditionalInformationStepProps {
 export function AdditionalInformationStep({
   isCheckAllDataStep,
 }: AdditionalInformationStepProps) {
-  const dateOfPowerOfAttorney = useLetterOfAttorney(
-    (state) => state.dateOfPowerOfAttorney
-  );
-  const dateOfAttorney = useLetterOfAttorney((state) => state.dateOfAttorney);
-  const placeOfAttorney = useLetterOfAttorney((state) => state.placeOfAttorney);
-  const replaceWithSomeoneElse = useAdditionalInformation(
+  const replaceWithSomeoneElse = useAttorneyData(
     (state) => state.replaceWithSomeoneElse
   );
-  const concludeBusinessWithYourself = useAdditionalInformation(
+  const concludeBusinessWithYourself = useAttorneyData(
     (state) => state.concludeBusinessWithYourself
   );
 
-  const setDateOfPowerOfAttorney = useLetterOfAttorney(
-    (state) => state.setDateOfPowerOfAttorney
-  );
-  const setDateOfAttorney = useLetterOfAttorney(
-    (state) => state.setDateOfAttorney
-  );
-  const setPlaceOfAttorney = useLetterOfAttorney(
-    (state) => state.setPlaceOfAttorney
-  );
-  const setReplaceWithSomeoneElse = useAdditionalInformation(
+  const setReplaceWithSomeoneElse = useAttorneyData(
     (state) => state.setReplaceWithSomeoneElse
   );
-  const setConcludeBusinessWithYourself = useAdditionalInformation(
+
+  const setConcludeBusinessWithYourself = useAttorneyData(
     (state) => state.setConcludeBusinessWithYourself
   );
 
   const { nextStep } = useWizard();
 
   function handleGoToNextStep() {
-    if (
-      dateOfPowerOfAttorney.trim() === "" ||
-      dateOfAttorney.trim() === "" ||
-      placeOfAttorney.trim() === "" ||
-      !replaceWithSomeoneElse ||
-      !concludeBusinessWithYourself
-    ) {
+    if (!replaceWithSomeoneElse || !concludeBusinessWithYourself) {
       return Toast({
         message: "Todos os campos são obrigatórios",
       });
@@ -73,8 +52,8 @@ export function AdditionalInformationStep({
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => handleGoToNextStep()}
-      instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.” <br /><br /> “A data de produção de efeitos é a data a partir da qual o procurador pode agir em nome do representado ao abrigo desta procuração.” <br /><br /> “Por favor, indique a data que pretende dar à procuração e o local em que a deverá assinar. Os documentos devem ter a data da sua assinatura.”"
-      legalBase="Art. 264.º, n.º 1 do CC <br />Art. 261.º, n.º 1 do CC"
+      instructions="“O representante pode fazer-se substituir por outrem se o representado o permitir ou se isso resultar da procuração.” <br /><br /> “O procurador só pode celebrar negócio consigo mesmo (ou seja, com o procurador) se o representado consentir.”"
+      legalBase="Art. 264.º, n.º 1 do CC"
     >
       <div className="grid grid-rows-3 gap-5 justify-center">
         <section className="ml-5">
@@ -108,36 +87,6 @@ export function AdditionalInformationStep({
             secondRadioValue="Não"
             value={concludeBusinessWithYourself}
             onValueChange={(value) => setConcludeBusinessWithYourself(value)}
-          />
-        </section>
-
-        <section>
-          <InputAndLabel
-            id="dateOfPowerOfAttorney"
-            labelContent="A partir de que data a produção deve produzir efeitos?"
-            placeholder="Data de efeito da procuração"
-            type="date"
-            value={dateOfPowerOfAttorney}
-            onChange={(event) => setDateOfPowerOfAttorney(event.target.value)}
-          />
-        </section>
-
-        <section className="mb-6 grid grid-rows-1 md:grid-cols-2">
-          <InputAndLabel
-            id="dateOfAttorney"
-            labelContent="Qual a data da procuração?"
-            placeholder="Selecione a data da procuração"
-            type="date"
-            value={dateOfAttorney}
-            onChange={(event) => setDateOfAttorney(event.target.value)}
-          />
-
-          <InputAndLabel
-            id="placeOfAttorney"
-            labelContent="Qual o local da procuração?"
-            placeholder="Digite o local"
-            value={placeOfAttorney}
-            onChange={(event) => setPlaceOfAttorney(event.target.value)}
           />
         </section>
       </div>

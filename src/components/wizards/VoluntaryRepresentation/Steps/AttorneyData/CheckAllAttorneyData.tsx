@@ -7,6 +7,7 @@ import { AttorneyPersonalDataStep } from "./AttorneyPersonalDataStep";
 import { PlaceOfBirthAndNationalityAttorneyStep } from "./PlaceOfBirthAndNationalityAttorneyStep";
 import { AttorneyCivilIdentificationStep } from "./AttorneyCivilIdentificationStep";
 import { AttorneyCurrentResidenceStep } from "./AttorneyCurrentResidenceStep";
+import { AdditionalInformationStep } from "./AdditionalInformationStep";
 
 export function CheckAllAttorneyData() {
   const { nextStep } = useWizard();
@@ -26,6 +27,7 @@ export function CheckAllAttorneyData() {
         <PlaceOfBirthAndNationalityAttorneyStep isCheckAllDataStep />
         <AttorneyCivilIdentificationStep isCheckAllDataStep />
         <AttorneyCurrentResidenceStep isCheckAllDataStep />
+        <AdditionalInformationStep isCheckAllDataStep />
       </section>
     </GenericStep>
   );

@@ -59,6 +59,8 @@ export interface AttorneyDataState {
   attorneyDocument: string | undefined;
   attorneyIssuingCountry: string | undefined;
   attorneyHabitualResidence: string;
+  replaceWithSomeoneElse: string | undefined;
+  concludeBusinessWithYourself: string | undefined;
   attorneys: AttorneyData[];
   setAttorneyName: (name: string) => void;
   setAttorneyMaritalStatus: (attorneyMaritalStatus: string | undefined) => void;
@@ -81,6 +83,12 @@ export interface AttorneyDataState {
     attorneyIssuingCountry: string | undefined
   ) => void;
   setAttorneyHabitualResidence: (attorneyHabitualResidence: string) => void;
+  setReplaceWithSomeoneElse: (
+    replaceWithSomeoneElse: string | undefined
+  ) => void;
+  setConcludeBusinessWithYourself: (
+    concludeBusinessWithYourself: string | undefined
+  ) => void;
   setAttorneys: (attorneys: AttorneyData[]) => void;
 }
 
@@ -91,15 +99,4 @@ export interface LetterOfAttorney {
   setDateOfPowerOfAttorney: (dateOfPowerOfAttorney: string) => void;
   setDateOfAttorney: (dateOfAttorney: string) => void;
   setPlaceOfAttorney: (placeOfAttorney: string) => void;
-}
-
-export interface AdditionalInformation {
-  replaceWithSomeoneElse: string | undefined;
-  concludeBusinessWithYourself: string | undefined;
-  setReplaceWithSomeoneElse: (
-    replaceWithSomeoneElse: string | undefined
-  ) => void;
-  setConcludeBusinessWithYourself: (
-    concludeBusinessWithYourself: string | undefined
-  ) => void;
 }

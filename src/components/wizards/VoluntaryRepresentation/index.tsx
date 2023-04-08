@@ -18,9 +18,12 @@ import { PlaceOfBirthAndNationalityAttorneyStep } from "./Steps/AttorneyData/Pla
 import { AttorneyCivilIdentificationStep } from "./Steps/AttorneyData/AttorneyCivilIdentificationStep";
 import { AttorneyCurrentResidenceStep } from "./Steps/AttorneyData/AttorneyCurrentResidenceStep";
 import { AdditionalInformationStep } from "./Steps/AttorneyData/AdditionalInformationStep";
+import { CheckAllAttorneyData } from "./Steps/AttorneyData/CheckAllAttorneyData";
 import { AddMoreAttorneyStep } from "./Steps/AttorneyData/AddMoreAttorneyStep";
 import { DeadlinePowerOfAttorneyStep } from "./Steps/AttorneyData/DeadlinePowerOfAttorneyStep";
-import { CheckAllAttorneyData } from "./Steps/AttorneyData/CheckAllAttorneyData";
+import { EstimatedTimePowerOfAttorney } from "./Steps/AttorneyData/EstimatedTimePowerOfAttorney";
+
+import { BreakpointAttorneyStep } from "./Steps/AttorneyData/BreakpointAttorneyStep";
 
 export function VoluntaryRepresentation() {
   return (
@@ -33,6 +36,7 @@ export function VoluntaryRepresentation() {
       <PlaceOfBirthAndNationalityStep />
       <CivilIdentificationStep />
       <CurrentResidenceStep />
+      <CheckAllPersonData />
       <BreakpointStep />
 
       <AttorneyPersonalDataStep />
@@ -43,8 +47,9 @@ export function VoluntaryRepresentation() {
       <CheckAllAttorneyData />
       <AddMoreAttorneyStep />
       <DeadlinePowerOfAttorneyStep />
+      <EstimatedTimePowerOfAttorney />
 
-      <CheckAllPersonData />
+      <BreakpointAttorneyStep />
     </Wizard>
   );
 }

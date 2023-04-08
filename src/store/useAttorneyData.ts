@@ -19,6 +19,8 @@ export const useAttorneyData = create(
       attorneyDocument: undefined,
       attorneyIssuingCountry: undefined,
       attorneyHabitualResidence: "",
+      replaceWithSomeoneElse: undefined,
+      concludeBusinessWithYourself: undefined,
       attorneys: [],
 
       setAttorneyName: (attorneyName) => set({ attorneyName }),
@@ -41,6 +43,10 @@ export const useAttorneyData = create(
         set({ attorneyIssuingCountry }),
       setAttorneyHabitualResidence: (attorneyHabitualResidence) =>
         set({ attorneyHabitualResidence }),
+      setReplaceWithSomeoneElse: (replaceWithSomeoneElse) =>
+        set({ replaceWithSomeoneElse }),
+      setConcludeBusinessWithYourself: (concludeBusinessWithYourself) =>
+        set({ concludeBusinessWithYourself }),
       setAttorneys: (attorneys) => set({ attorneys }),
     }),
     { name: "attorney-data-storage" }

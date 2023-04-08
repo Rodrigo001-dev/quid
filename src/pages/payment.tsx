@@ -13,7 +13,6 @@ import { Toast } from "@/components/shared/Toast";
 import { usePersonData } from "@/store/usePersonData";
 import { useAttorneyData } from "@/store/useAttorneyData";
 import { useLetterOfAttorney } from "@/store/useLetterOfAttorney";
-import { useAdditionalInformation } from "@/store/useAdditionalInformation";
 
 import { errorMessages } from "@/utils/errors/errorMessages";
 import { generatePDF } from "@/utils/generatePDF";
@@ -130,6 +129,8 @@ export default function Payment() {
         attorneyDocument: undefined,
         attorneyIssuingCountry: undefined,
         attorneyHabitualResidence: "",
+        replaceWithSomeoneElse: undefined,
+        concludeBusinessWithYourself: undefined,
         attorneys: [],
       });
 
@@ -137,11 +138,6 @@ export default function Payment() {
         dateOfAttorney: "",
         dateOfPowerOfAttorney: "",
         placeOfAttorney: "",
-      });
-
-      useAdditionalInformation.setState({
-        replaceWithSomeoneElse: undefined,
-        concludeBusinessWithYourself: undefined,
       });
 
       setEmail("");

@@ -36,11 +36,19 @@ export function PlaceOfBirthAndNationalityStep({
     if (
       personNationality.trim() === "" ||
       personCountry === "Escolha um país" ||
-      !personCountry ||
-      !personConcelho ||
-      personConcelho === "Escolha um concelho" ||
-      !personFreguesia ||
-      personFreguesia === "Escolha uma freguesia"
+      !personCountry
+    ) {
+      return Toast({
+        message: "Todos os campos são obrigatórios",
+      });
+    }
+
+    if (
+      personCountry === "Portugal" &&
+      (!personConcelho ||
+        personConcelho === "Escolha um concelho" ||
+        !personFreguesia ||
+        personFreguesia === "Escolha uma freguesia")
     ) {
       return Toast({
         message: "Todos os campos são obrigatórios",
@@ -84,25 +92,28 @@ export function PlaceOfBirthAndNationalityStep({
           />
         </section>
 
-        <section>
-          <Select
-            id="concelho"
-            labelContent="Escolha um concelho"
-            data={concelhos}
-            value={personConcelho}
-            onChange={(event) => setPersonConcelho(event.target.value)}
-          />
-        </section>
-
-        <section>
-          <Select
-            id="freguesia"
-            labelContent="Escolha uma freguesia"
-            data={freguesias}
-            value={personFreguesia}
-            onChange={(event) => setPersonFreguesia(event.target.value)}
-          />
-        </section>
+        {personCountry === "Portugal" && (
+          <>
+            <section>
+              <Select
+                id="concelho"
+                labelContent="Escolha um concelho"
+                data={concelhos}
+                value={personConcelho}
+                onChange={(event) => setPersonConcelho(event.target.value)}
+              />
+            </section>
+            <section>
+              <Select
+                id="freguesia"
+                labelContent="Escolha uma freguesia"
+                data={freguesias}
+                value={personFreguesia}
+                onChange={(event) => setPersonFreguesia(event.target.value)}
+              />
+            </section>
+          </>
+        )}
       </div>
     </GenericStep>
   );
