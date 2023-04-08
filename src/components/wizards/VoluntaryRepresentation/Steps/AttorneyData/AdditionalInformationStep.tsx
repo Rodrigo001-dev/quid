@@ -69,7 +69,7 @@ export function AdditionalInformationStep({
 
   return (
     <GenericStep
-      title="Algumas informações adicionais sobre o(s) procurador(es)"
+      title="Algumas informações adicionais sobre o procurador"
       isCheckAllDataStep={isCheckAllDataStep}
       firstButtonContent="Continuar."
       onClickFirstButton={() => handleGoToNextStep()}

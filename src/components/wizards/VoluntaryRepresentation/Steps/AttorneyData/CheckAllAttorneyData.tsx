@@ -3,10 +3,10 @@ import { useWizard } from "react-use-wizard";
 
 import { GenericStep } from "../../../GenericStep";
 
-import { AttorneyPersonalDataStep } from "./TenthStep";
-import { PlaceOfBirthAndNationalityAttorneyStep } from "./EleventhStep";
-import { AttorneyCivilIdentificationStep } from "./TwelfthStep";
-import { AttorneyCurrentResidenceStep } from "./ThirteenthStep";
+import { AttorneyPersonalDataStep } from "./AttorneyPersonalDataStep";
+import { PlaceOfBirthAndNationalityAttorneyStep } from "./PlaceOfBirthAndNationalityAttorneyStep";
+import { AttorneyCivilIdentificationStep } from "./AttorneyCivilIdentificationStep";
+import { AttorneyCurrentResidenceStep } from "./AttorneyCurrentResidenceStep";
 
 export function CheckAllAttorneyData() {
   const { nextStep } = useWizard();

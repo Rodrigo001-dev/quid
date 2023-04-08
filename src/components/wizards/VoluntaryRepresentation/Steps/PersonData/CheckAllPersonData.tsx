@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { GenericStep } from "../../../GenericStep";
-import { PowersIntendsConfer } from "./ThirdStep";
-import { PersonalDataStep } from "./FifthStep";
-import { PlaceOfBirthAndNationalityStep } from "./SixthStep";
-import { CivilIdentificationStep } from "./SeventhStep";
-import { CurrentResidenceStep } from "./EighthStep";
+import { PowersIntendsConfer } from "./PowersIntendsConfer";
+import { PersonalDataStep } from "./PersonalDataStep";
+import { PlaceOfBirthAndNationalityStep } from "./PlaceOfBirthAndNationalityStep";
+import { CivilIdentificationStep } from "./CivilIdentificationStep";
+import { CurrentResidenceStep } from "./CurrentResidenceStep";
 
 export function CheckAllPersonData() {
   const router = useRouter();
