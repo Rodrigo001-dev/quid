@@ -39,16 +39,17 @@ export function generatePDF() {
 
   const lines = doc.splitTextToSize(
     `${personName}, ${personMaritalStatus}, ${
-      personFreguesia &&
-      personConcelho &&
-      `da freguesia de ${personFreguesia} no concelho de ${personConcelho},`
+      personFreguesia !== undefined && personConcelho !== undefined
+        ? `da freguesia de ${personFreguesia} no concelho de ${personConcelho},`
+        : ""
     } ${personCountry}, de nacionalidade ${personNationality}, titular do ${personDocument} número ${personIdentificationNumber}, emitido pelo país: ${personIssuingCountry} e válido até ${registrationCalendar}, contribuinte fiscal número ${taxIdentificationNumber}, residente em ${personHabitualResidence}, (“Mandante”), constitui, pela presente, seu/sua bastante ${attorneys.map(
       (attorney) =>
         `procurador(a) o/a Senhor(a) ${attorney.attorneyName}, ${
           attorney.attorneyMaritalStatus
         }, ${
-          attorney.attorneyConcelho !== undefined &&
-          `natural de ${attorney.attorneyConcelho}`
+          attorney.attorneyConcelho !== undefined
+            ? `natural de ${attorney.attorneyConcelho}`
+            : ""
         }, ${attorney.attorneyCountry}, de nacionalidade ${
           attorney.attorneyNationality
         }, titular do ${attorney.attorneyDocument} número ${
