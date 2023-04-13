@@ -3,7 +3,7 @@ import { NavigationButton } from "@/components/shared/NavigationButton";
 export default function Thanks() {
   return (
     <main className="min-h-screen flex flex-col justify-between overflow-hidden bg-[url('/assets/final-page-bg.svg')] bg-contain bg-no-repeat bg-right">
-      <div className="max-w-[1440px] mt-72 ml-32 text-text-500">
+      <div className="max-w-[1440px] mt-44 sm-mim:mt-72 ml-10 sm-mim:ml-32 text-text-500">
         <h1 className="text-5xl text-bold font-bold pb-11">Obrigado!</h1>
 
         <p className="text-lg pb-11">
